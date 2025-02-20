@@ -1,6 +1,52 @@
 //variables globals
 var canvas, ctx, interval;
 
+
+let stage = function(x, y, width, height, imatge){
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
+    this.imatge = imatge;
+    this.frameContador = 0;
+    this.frameDelay = 5;
+
+    this.dibuixa = function(){
+        sprite = new Image();
+        sprite.src = this.imatge;
+        ctx.drawImage(sprite,
+                      this.canvas_x,
+                      this.canvas_y,
+                      this.canvas_w,
+                      this.canvas_h,
+                      this.x,
+                      this.y,
+                      this.width,
+                      this.height
+                    );
+    }
+
+    let currentFrame = 0;
+    this.animacio = function(){
+        if(this.frameContador >= this.frameDelay){
+            //codi animacio
+            currentFrame = (currentFrame + 1) % escenari.length;
+            frame = escenari[currentFrame];
+
+            this.canvas_x = frame.x;
+            this.canvas_y = frame.y;
+            this.canvas_w = frame.width;
+            this.canvas_h = frame.height;
+            
+            this.frameContador = 0;
+        } else{
+            this.frameContador++;
+        }
+        this.dibuixa();
+        // interval_player1 = requestAnimationFrame(this.animacio.bind(this)); 
+    }
+}
+
 //clase player1
 let player1 = function (x, y, width, height, imatge){
     this.x = x;
@@ -154,9 +200,9 @@ let player2 = function (x, y, width, height, imatge){
 
 
 // creem el jugador 1 y 2
-let ryu = new player1 (70, 99, 59, 90, 'img/ryu_sprite.png'); //x, y, width, height, color = posHoritzontalCanvas, posVerticalCanvas, amplePersonatge, alturaPersonatge, imgPersonatge
-let ken = new player2 (300, 100, 59, 90, 'img/ken_sprite.png'); //x, y, width, height, color = posHoritzontalCanvas, posVerticalCanvas, amplePersonatge, alturaPersonatge, imgPersonatge
-
+let ryu = new player1 (50, 99, 59, 90, 'img/ryu_sprite.png'); //x, y, width, height, color = posHoritzontalCanvas, posVerticalCanvas, amplePersonatge, alturaPersonatge, imgPersonatge
+let ken = new player2 (280, 100, 59, 90, 'img/ken_sprite.png'); //x, y, width, height, color = posHoritzontalCanvas, posVerticalCanvas, amplePersonatge, alturaPersonatge, imgPersonatge
+let escenari_ken = new stage(0, 0, 621, 224, 'img/Ken_Background_sprite.png');
 
 //events de teclat
 document.addEventListener('keydown', (e)=>{
@@ -211,6 +257,9 @@ function inici() {
 
 function principal(){
     esborrarCanvas();
+
+    escenari_ken.dibuixa();
+    escenari_ken.animacio();
 
     ken.dibuixa();
     ken.animacio();
