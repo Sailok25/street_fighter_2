@@ -2,12 +2,12 @@
 var canvas, ctx, interval;
 
 //clase lluitador
-let player2 = function (x, y, width, height, color){
+let player2 = function (x, y, width, height, imatge){
     this.x = x;
     this.y = y;
     this.width = width;
     this.height = height;
-    this.color = color;
+    this.imatge = imatge;
 
     this.velocitat = 3;
     this.dreta = true;
@@ -15,8 +15,18 @@ let player2 = function (x, y, width, height, color){
     this.frameDelay = 5;
 
     this.dibuixa = function(){
-        ctx.fillStyle = this.color;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        sprite = new Image();
+        sprite.src = this.imatge;
+        ctx.drawImage(sprite,
+                      this.canvas_x,
+                      this.canvas_y,
+                      this.canvas_w,
+                      this.canvas_h,
+                      this.x,
+                      this.y,
+                      this.width,
+                      this.height
+                    );
     }
 
     this.mou = function(){
@@ -45,25 +55,29 @@ let player2 = function (x, y, width, height, color){
         this.x += this.velocitat;
     }
 
+    let currentFrame = 0;
     this.animacio = function(){
         if(this.frameContador >= this.frameDelay){
             //codi animacio
-            if(this.color == 'red'){
-                this.color = 'green';
-            } else{
-                this.color= 'red';
-            }
+            currentFrame = (currentFrame + 1) % ready2.length;
+            frame = ready2[currentFrame];
+
+            this.canvas_x = frame.x;
+            this.canvas_y = frame.y;
+            this.canvas_w = frame.width;
+            this.canvas_h = frame.height;
+            
             this.frameContador = 0;
         } else{
             this.frameContador++;
         }
         this.dibuixa();
-        interval_player1 = requestAnimationFrame(this.animacio.bind(this)); 
+        // interval_player1 = requestAnimationFrame(this.animacio.bind(this)); 
     }
 }
 
 // creem el jugador 1 y 2
-let ken = new player2 (300, 100, 30, 80, 'red'); //x, y, width, height, color = posHoritzontalCanvas, posVerticalCanvas, amplePersonatge, alturaPersonatge, colorPersonatge
+let ken = new player2 (300, 100, 59, 90, 'img/ken_sprite.png'); //x, y, width, height, color = posHoritzontalCanvas, posVerticalCanvas, amplePersonatge, alturaPersonatge, imgPersonatge
 
 
 //events de teclat
@@ -92,12 +106,10 @@ document.addEventListener('keydown', (e)=>{
 
     // Tecles Jugador 2
     if(e.key == 'ArrowUp'){
-        ken.adalt();
         console.log('jugador 2 - amunt');
     }
 
     if(e.key == 'ArrowDown'){
-        ken.abaix();
         console.log('jugador 2 - abaix');
     }
 
