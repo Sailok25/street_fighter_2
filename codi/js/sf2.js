@@ -2,7 +2,7 @@
 var canvas, ctx, interval;
 
 //clase lluitador
-let lluitador = function (x, y, width, height, color){
+let player2 = function (x, y, width, height, color){
     this.x = x;
     this.y = y;
     this.width = width;
@@ -63,48 +63,51 @@ let lluitador = function (x, y, width, height, color){
 }
 
 // creem el jugador 1 y 2
-let player1 = new lluitador(150, 200, 30, 80, 'red'); //x, y, width, height, color = horitzontalCanvas, verticalCanvas, amplePersonatge, alturaPersonatge, colorPersonatge
-let player2 = new lluitador(600, 200, 30, 80, 'blue'); //x, y, width, height, color = horitzontalCanvas, verticalCanvas, amplePersonatge, alturaPersonatge, colorPersonatge
+let ken = new player2 (300, 100, 30, 80, 'red'); //x, y, width, height, color = posHoritzontalCanvas, posVerticalCanvas, amplePersonatge, alturaPersonatge, colorPersonatge
 
 
-// events de teclat
+//events de teclat
 document.addEventListener('keydown', (e)=>{
 
-    // Tecles Jugador 1
-    if(e.key == 'w'){
-        console.log('jugador 1 - amunt');
-        player1.amunt();
-    }
+//     // Tecles Jugador 1
+//     if(e.key == 'w'){
+//         console.log('jugador 1 - amunt');
+//         player1.amunt();
+//     }
 
-    if(e.key == 's'){
-        console.log('jugador 1 - abaix');
-        player1.abaix();
-    }
+//     if(e.key == 's'){
+//         console.log('jugador 1 - abaix');
+//         player1.abaix();
+//     }
 
-    if(e.key == 'a'){
-        console.log('jugador 1 - esquerra');
-        player1.esquerra();
-    }
+//     if(e.key == 'a'){
+//         console.log('jugador 1 - esquerra');
+//         player1.esquerra();
+//     }
 
-    if(e.key == 'd'){
-        console.log('jugador 1 - dreta');
-        player1.dreta();
-    }
+//     if(e.key == 'd'){
+//         console.log('jugador 1 - dreta');
+//         player1.dreta();
+//     }
 
     // Tecles Jugador 2
     if(e.key == 'ArrowUp'){
+        ken.adalt();
         console.log('jugador 2 - amunt');
     }
 
     if(e.key == 'ArrowDown'){
+        ken.abaix();
         console.log('jugador 2 - abaix');
     }
 
     if(e.key == 'ArrowLeft'){
+        ken.esquerra();
         console.log('jugador 2 - esquerra');
     }
 
     if(e.key == 'ArrowRight'){
+        ken.dreta();
         console.log('jugador 2 - dreta');
     }
 })
@@ -121,8 +124,8 @@ function inici() {
 function principal(){
     esborrarCanvas();
 
-    player1.dibuixa();
-    player1.animacio();
+    ken.dibuixa();
+    ken.animacio();
     // player1.mou();
 
     // player2.dibuixa();
