@@ -1,4 +1,13 @@
-// Animacions Player2
+// Animacions generals
+let escenari = [
+    {x: 0, y: 0, width: 621,height: 224},   
+    {x: 621, y: 0, width: 621,height: 224},   
+    {x: 1242, y: 0, width: 621,height: 224},   
+    {x: 2484, y: 0, width: 621,height: 224}
+];
+
+
+// Animacions Player1
 let ready1 = [
     {x: 6, y: 14, width: 60,height: 91},
     {x: 74, y: 13, width: 60,height: 91},
@@ -6,6 +15,7 @@ let ready1 = [
     {x: 210, y: 10, width: 55,height: 93}
 ];
 
+// Animacions Player2
 let ready2 = [
     {x: 3, y: 528, width: 59,height: 90},
     {x: 69, y: 529, width: 59,height: 89},
