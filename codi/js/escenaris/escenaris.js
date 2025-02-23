@@ -10,6 +10,45 @@ let escenari_campana = [
 
 
 /* img/backgrounds --> bg2 */
+let escenari_vegas = [
+    {x: 0, y: 0, width: 639, height: 480},   
+    {x: 639, y: 0, width: 639, height: 480},   
+    {x: 1278, y: 0, width: 639, height: 480},   
+    {x: 1917, y: 0, width: 639, height: 480},   
+    {x: 2556, y: 0, width: 639, height: 480},   
+    {x: 3195, y: 0, width: 639, height: 480},   
+    {x: 3834, y: 0, width: 639, height: 480},   
+    {x: 4473, y: 0, width: 639, height: 480},   
+    {x: 5112, y: 0, width: 639, height: 480},   
+    {x: 5751, y: 0, width: 639, height: 480},   
+    {x: 6390, y: 0, width: 639, height: 480},   
+    {x: 7029, y: 0, width: 639, height: 480},   
+    {x: 7668, y: 0, width: 639, height: 480},   
+    {x: 8307, y: 0, width: 639, height: 480},   
+    {x: 8946, y: 0, width: 639, height: 480},   
+    {x: 9585, y: 0, width: 639, height: 480},   
+    {x: 10224, y: 0, width: 639, height: 480},   
+    {x: 10863, y: 0, width: 639, height: 480},   
+    {x: 11502, y: 0, width: 639, height: 480},   
+    {x: 12141, y: 0, width: 639, height: 480},   
+    {x: 12780, y: 0, width: 639, height: 480},   
+    {x: 13419, y: 0, width: 639, height: 480},   
+    {x: 14058, y: 0, width: 639, height: 480},   
+    {x: 14697, y: 0, width: 639, height: 480},   
+    {x: 15336, y: 0, width: 639, height: 480},   
+    {x: 15975, y: 0, width: 639, height: 480},   
+    {x: 16614, y: 0, width: 639, height: 480},   
+    {x: 17253, y: 0, width: 639, height: 480},   
+    {x: 17892, y: 0, width: 639, height: 480},   
+    {x: 18531, y: 0, width: 639, height: 480},   
+    {x: 19170, y: 0, width: 639, height: 480},   
+    {x: 19809, y: 0, width: 639, height: 480}
+];
+
+
+
+
+/* img/backgrounds --> bg2 */
 let escenari_termas = [
     {x: 0, y: 0, width: 768, height: 224},   
     {x: 768, y: 0, width: 768, height: 224},   
