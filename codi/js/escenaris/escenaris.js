@@ -33,6 +33,21 @@ let escenari_comunista = [
 
 
 
+/* img/backgrounds --> bg6 */
+let escenari_elefantes = [
+    {x: 0, y: 0, width: 1280, height: 592},   
+    {x: 1280, y: 0, width: 1280, height: 592},   
+    {x: 2560, y: 0, width: 1280, height: 592},   
+    {x: 3840, y: 0, width: 1280, height: 592},   
+    {x: 5120, y: 0, width: 1280, height: 592},   
+    {x: 6400, y: 0, width: 1280, height: 592},   
+    {x: 7680, y: 0, width: 1280, height: 592},   
+    {x: 8960, y: 0, width: 1280, height: 592},   
+    {x: 10240, y: 0, width: 1280, height: 592}    
+];
+
+
+
 /* img/backgrounds --> bg7 */
 let escenari_barco = [
     {x: 0, y: 0, width: 621,height: 224},   
