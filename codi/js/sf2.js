@@ -202,7 +202,7 @@ let player2 = function (x, y, width, height, imatge){
 // creem el jugador 1 y 2
 let ryu = new player1 (50, 99, 59, 90, 'img/sprites/ryu_sprite.png'); //x, y, width, height, color = posHoritzontalCanvas, posVerticalCanvas, amplePersonatge, alturaPersonatge, imgPersonatge
 let ken = new player2 (280, 100, 59, 90, 'img/sprites/ken_sprite.png'); //x, y, width, height, color = posHoritzontalCanvas, posVerticalCanvas, amplePersonatge, alturaPersonatge, imgPersonatge
-let escenari_ken = new stage(0, 0, 621, 224, 'img/backgrounds/bg7/Ken_Background_sprite.png');
+let escenari_ken = new stage(0, 0, 621, 224, 'img/backgrounds/bg7.png');
 
 //events de teclat
 document.addEventListener('keydown', (e)=>{
