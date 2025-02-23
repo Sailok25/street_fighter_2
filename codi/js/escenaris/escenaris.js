@@ -22,6 +22,27 @@ let escenari_termas = [
 
 
 
+/* img/backgrounds --> bg4 */
+let escenari_templo = [
+    {x: 0, y: 0, width: 1280, height: 433},   
+    {x: 1280, y: 0, width: 1280, height: 433},   
+    {x: 2560, y: 0, width: 1280, height: 433},   
+    {x: 3840, y: 0, width: 1280, height: 433},   
+    {x: 5120, y: 0, width: 1280, height: 433},   
+    {x: 6400, y: 0, width: 1280, height: 433},   
+    {x: 7680, y: 0, width: 1280, height: 433},   
+    {x: 8960, y: 0, width: 1280, height: 433},   
+    {x: 10240, y: 0, width: 1280, height: 433},  
+    {x: 11520, y: 0, width: 1280, height: 433},  
+    {x: 12800, y: 0, width: 1280, height: 433},  
+    {x: 14080, y: 0, width: 1280, height: 433},  
+    {x: 15360, y: 0, width: 1280, height: 433},  
+    {x: 16640, y: 0, width: 1280, height: 433},  
+    {x: 17920, y: 0, width: 1280, height: 433}    
+];
+
+
+
 /* img/backgrounds --> bg5 */
 let escenari_comunista = [
     {x: 0, y: 0, width: 1280, height: 605},   
