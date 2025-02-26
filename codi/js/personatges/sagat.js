@@ -1,4 +1,4 @@
-let ryu_base = [
+let sagat_base = [
     {x: 3, y: 788, width: 74,height: 117},
     {x: 84, y: 786, width: 74, height: 119},
     {x: 165, y: 785, width: 74,height: 120},

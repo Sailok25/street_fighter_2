@@ -30,8 +30,8 @@ let stage = function(x, y, width, height, imatge){
     this.animacio = function(){
         if(this.frameContador >= this.frameDelay){
             //codi animacio
-            currentFrame = (currentFrame + 1) % escenari_barco.length;
-            frame = escenari_barco[currentFrame];
+            currentFrame = (currentFrame + 1) % escenari_campana.length;
+            frame = escenari_campana[currentFrame];
 
             this.canvas_x = frame.x;
             this.canvas_y = frame.y;
@@ -105,8 +105,8 @@ let player1 = function (x, y, width, height, imatge){
     this.animacio = function(){
         if(this.frameContador >= this.frameDelay){
             //codi animacio
-            currentFrame = (currentFrame + 1) % ryu_base.length;
-            frame = ryu_base[currentFrame];
+            currentFrame = (currentFrame + 1) % blanka_base.length;
+            frame = blanka_base[currentFrame];
 
             this.canvas_x = frame.x;
             this.canvas_y = frame.y;
@@ -181,8 +181,8 @@ let player2 = function (x, y, width, height, imatge){
     this.animacio = function(){
         if(this.frameContador >= this.frameDelay){
             //codi animacio
-            currentFrame = (currentFrame + 1) % ken_base.length;
-            frame = ken_base[currentFrame];
+            currentFrame = (currentFrame + 1) % m_bison_base.length;
+            frame = m_bison_base[currentFrame];
 
             this.canvas_x = frame.x;
             this.canvas_y = frame.y;
@@ -200,9 +200,9 @@ let player2 = function (x, y, width, height, imatge){
 
 
 // creem el jugador 1 y 2
-let ryu = new player1 (50, 99, 59, 90, 'img/characters/ryu_sprite.png'); //x, y, width, height, color = posHoritzontalCanvas, posVerticalCanvas, amplePersonatge, alturaPersonatge, imgPersonatge
-let ken = new player2 (280, 100, 59, 90, 'img/characters/ken_sprite.png'); //x, y, width, height, color = posHoritzontalCanvas, posVerticalCanvas, amplePersonatge, alturaPersonatge, imgPersonatge
-let escenari_ken = new stage(0, 0, 621, 224, 'img/backgrounds/bg7.png');
+let blanka = new player1 (50, 135, 90, 75, 'img/characters/blanka_sprite.png'); //x, y, width, height, color = posHoritzontalCanvas, posVerticalCanvas, amplePersonatge, alturaPersonatge, imgPersonatge
+let m_bison = new player2 (280, 120, 52, 90, 'img/characters/m_bison_sprite.png'); //x, y, width, height, color = posHoritzontalCanvas, posVerticalCanvas, amplePersonatge, alturaPersonatge, imgPersonatge
+let escenari_m_bison = new stage(0, 0, 384, 224, 'img/backgrounds/bg1.png');
 
 //events de teclat
 document.addEventListener('keydown', (e)=>{
@@ -217,12 +217,12 @@ document.addEventListener('keydown', (e)=>{
     }
 
     if(e.key == 'a'){
-        ryu.esquerra();
+        blanka.esquerra();
         console.log('jugador 1 - esquerra');
     }
 
     if(e.key == 'd'){
-        ryu.dreta();
+        blanka.dreta();
         console.log('jugador 1 - dreta');
     }
 
@@ -236,12 +236,12 @@ document.addEventListener('keydown', (e)=>{
     }
 
     if(e.key == 'ArrowLeft'){
-        ken.esquerra();
+        m_bison.esquerra();
         console.log('jugador 2 - esquerra');
     }
 
     if(e.key == 'ArrowRight'){
-        ken.dreta();
+        m_bison.dreta();
         console.log('jugador 2 - dreta');
     }
 })
@@ -258,14 +258,14 @@ function inici() {
 function principal(){
     esborrarCanvas();
 
-    escenari_ken.dibuixa();
-    escenari_ken.animacio();
+    escenari_m_bison.dibuixa();
+    escenari_m_bison.animacio();
 
-    ken.dibuixa();
-    ken.animacio();
+    m_bison.dibuixa();
+    m_bison.animacio();
 
-    ryu.dibuixa();
-    ryu.animacio();
+    blanka.dibuixa();
+    blanka.animacio();
         
     interval = requestAnimationFrame(principal);
 }
