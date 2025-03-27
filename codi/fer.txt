@@ -1,2 +1,0 @@
-Prem tecla s = musica para 
-torna a premer tecla S = musica continua
