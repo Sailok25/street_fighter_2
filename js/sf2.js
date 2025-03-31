@@ -70,7 +70,7 @@ let player1 = function (x, y, width, height, imatge, barraVida) {
     this.velocitat = 3;
     this.dreta = true;
     this.frameContador = 0;
-    this.frameDelay = 7;
+    this.frameDelay = 8;
 
     this.base = false;
     this.victoria1 = false;
@@ -341,7 +341,7 @@ let player2 = function (x, y, width, height, imatge, barraVida) {
     this.velocitat = 3;
     this.dreta = true;
     this.frameContador = 0;
-    this.frameDelay = 7;
+    this.frameDelay = 8;
 
     this.base = false;
     this.victoria1 = false;
@@ -506,6 +506,29 @@ let player2 = function (x, y, width, height, imatge, barraVida) {
                 this.canvas_h = frame.height;
 
                 this.frameContador = 0;
+
+                if (currentFrame === m_bison_cop_puny.length - 1) {
+                    this.cop_puny = false;
+                }
+
+            } else {
+                this.frameContador++;
+            }
+        } else if (this.patada) {
+            if (this.frameContador >= this.frameDelay) {
+                currentFrame = (currentFrame + 1) % m_bison_patada.length;
+                frame = m_bison_patada[currentFrame];
+
+                this.canvas_x = frame.x;
+                this.canvas_y = frame.y;
+                this.canvas_w = frame.width;
+                this.canvas_h = frame.height;
+
+                this.frameContador = 0;
+
+                if (currentFrame === m_bison_patada.length - 1) {
+                    this.patada = false;
+                }
             } else {
                 this.frameContador++;
             }
@@ -520,6 +543,11 @@ let player2 = function (x, y, width, height, imatge, barraVida) {
                 this.canvas_h = frame.height;
 
                 this.frameContador = 0;
+
+                if (currentFrame === m_bison_cop_especial.length - 1) {
+                    this.cop_especial = false;
+                }
+
             } else {
                 this.frameContador++;
             }
@@ -620,7 +648,7 @@ let elements = function (x, y, width, height, imatge, tipusElement) {
     this.velocitat = 3;
     this.dreta = true;
     this.frameContador = 0;
-    this.frameDelay = 5;
+    this.frameDelay = 7;
 
     let sprite = new Image();
     sprite.src = this.imatge;
@@ -709,6 +737,16 @@ document.addEventListener('keydown', (e) => {
     if (e.key == 'w') {
         blanka.saltar();
     }
+    if (e.key == 'c') {
+        blanka.cop_puny = true;
+    }
+    if (e.key == 'f') {
+        blanka.patada = true;
+    }
+    if (e.key == 'e') {
+        blanka.cop_especial = true;
+    }
+
     if (e.key == 'r') {
         blanka.restarVida();
     }
@@ -722,6 +760,15 @@ document.addEventListener('keydown', (e) => {
     }
     if (e.key == 'ArrowUp') {
         m_bison.saltar();
+    }
+    if (e.key == '8') {
+        m_bison.cop_puny = true;
+    }
+    if (e.key === '9') {
+        m_bison.patada = true;
+    }
+    if (e.key === '0') {
+        m_bison.cop_especial = true;
     }
 
     if (e.key == 'Enter') {
@@ -739,6 +786,15 @@ document.addEventListener('keyup', (e) => {
     }
     if (e.key == 'w') {
         blanka.salta = false;
+    }
+    if (e.key == 's') {
+        blanka.cop_puny = false;
+    }
+    if (e.key == 'f') {
+        blanka.patada = false;
+    }
+    if (e.key == 'g') {
+        blanka.cop_especial = false;
     }
 
     // Tecles Jugador 2
