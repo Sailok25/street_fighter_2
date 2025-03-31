@@ -17,17 +17,19 @@
 - [x] Control jugador que ha guanyat: Mostrar el missatge *"[nomPersonatge] wins!"* quan un jugador guanyi.  
 - [ ] Moviment de finestra (desplaçament per l'eçenari)
 - [ ] Col·lisió
-- [ ] Musica i efectes *//Amb tecla S, para o reactiva la musica*
+- [ ] Musica i efectes
 
 
 ## 🎭 ANIMACIONS  
 - [x] Animació de victòria: Quan un jugador guanyi una ronda o partida, reproduir animació i parar el comptador.  
 - [x] Animació de derrota: Quan un jugador perdi una ronda o partida, reproduir animació i parar el comptador.  
-- [ ] Animació de cop de puny: Quan el jugador prem una tecla (*P1 = "P" / P2 = "H"*).  
-- [ ] Animació de cop especial: Quan el jugador prem una tecla (*P1 = "E" / P2 = "U"*). 
-- [ ] Animació de caminar esquerra: Quan el jugador prem una tecla.
-- [ ] Animació de caminar dreta: Quan el jugador prem una tecla.
+- [x] Animació de caminar esquerra: Quan el jugador prem una tecla.
+- [x] Animació de caminar dreta: Quan el jugador prem una tecla.
+- [-] Animació de cop de puny: Quan el jugador prem una tecla (*P1 = "C" / P2 = "8(vuit)"*).  
+- [-] Animació de cop especial: Quan el jugador prem una tecla (*P1 = "E" / P2 = "0(zero)"*). 
+- [-] Animació de patada: Quan el jugador prem una tecla (*P1 = "F" / P2 = "9(nou)"*).
 
 ## 🥚 EASTER EGG  
 - [ ] Control d'escenaris: Canviar escenari prement una tecla (*Ex: números 1, 2, 3... o "M" per moure*).  
 - [ ] Mode inmortal (teclejant 'god')
+- [ ] Parar o reactivar la musica del joc amb la tecla S
