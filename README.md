@@ -25,8 +25,8 @@
 - [x] Animació de derrota: Quan un jugador perdi una ronda o partida, reproduir animació i parar el comptador.  
 - [ ] Animació de cop de puny: Quan el jugador prem una tecla (*P1 = "P" / P2 = "H"*).  
 - [ ] Animació de cop especial: Quan el jugador prem una tecla (*P1 = "E" / P2 = "U"*). 
-- [ ] Animació de caminar esquerra: Quan el jugador prem una tecla.
-- [ ] Animació de caminar dreta: Quan el jugador prem una tecla.
+- [x] Animació de caminar esquerra: Quan el jugador prem una tecla.
+- [x] Animació de caminar dreta: Quan el jugador prem una tecla.
 
 ## 🥚 EASTER EGG  
 - [ ] Control d'escenaris: Canviar escenari prement una tecla (*Ex: números 1, 2, 3... o "M" per moure*).  
