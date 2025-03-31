@@ -81,11 +81,15 @@ let player1 = function (x, y, width, height, imatge, barraVida) {
     this.cop_especial = false;
     this.salta = false;
     this.en_timeover = false;
+    this.endarrere = false;
+    this.endavant = false;
 
     this.ha_guanyat = false;
     this.parar_animacio = false;
     this.mostrarWinPetit = false;
     this.mostrarWinGran = false;
+    this.esta_saltant = false;
+    this.esta_aterritzant = false;
 
     let sprite = new Image();
     sprite.src = this.imatge;
@@ -101,6 +105,11 @@ let player1 = function (x, y, width, height, imatge, barraVida) {
         if (this.canvas_h == 102) {
             this.y = 115;
             this.x = 40;
+        }
+
+        // endevant i endarrere
+        if (this.canvas_h == 81) {
+            this.y = 135;
         }
 
         //base
@@ -139,10 +148,12 @@ let player1 = function (x, y, width, height, imatge, barraVida) {
 
     this.esquerra = function () {
         this.x -= this.velocitat;
+        this.endavant = true;
     }
 
     this.dreta = function () {
         this.x += this.velocitat;
+        this.endarrere = true;
     }
 
     let currentFrame = 0;
@@ -305,7 +316,6 @@ let player1 = function (x, y, width, height, imatge, barraVida) {
             }
         }
 
-
         this.dibuixa();
     }
 
@@ -342,11 +352,15 @@ let player2 = function (x, y, width, height, imatge, barraVida) {
     this.cop_especial = false;
     this.salta = false;
     this.en_timeover = false;
+    this.endarrere = false;
+    this.endavant = false;
 
     this.ha_guanyat = false;
     this.parar_animacio = false;
     this.mostrarWinPetit = false;
     this.mostrarWinGran = false;
+    this.esta_saltant = false;
+    this.esta_aterritzant = false;
 
     let sprite = new Image();
     sprite.src = this.imatge;
@@ -403,10 +417,21 @@ let player2 = function (x, y, width, height, imatge, barraVida) {
 
     this.esquerra = function () {
         this.x -= this.velocitat;
+        this.endavant = true;
     }
 
     this.dreta = function () {
         this.x += this.velocitat;
+        this.endarrere = true;
+    }
+
+    this.saltar = function () {
+        if (!this.saltant && !this.aterritzant) { // Si no esta saltant ni aterrant fara el salt
+            this.saltant = true;
+            this.velocitatSalt = 15; // Velocidad inicial del salto
+            this.alturaMaxima = 150; // Altura máxima del salto
+            this.posicioInicialY = this.y;
+        }
     }
 
     let currentFrame = 0;
@@ -414,6 +439,7 @@ let player2 = function (x, y, width, height, imatge, barraVida) {
         if (this.parar_animacio) {
             return;
         }
+        
 
         if (this.victoria1) {
             if (this.frameContador >= 9) {
@@ -525,6 +551,34 @@ let player2 = function (x, y, width, height, imatge, barraVida) {
             } else {
                 this.frameContador++;
             }
+        } else if (this.endarrere) {
+            if (this.frameContador >= this.frameDelay) {
+                currentFrame = (currentFrame + 1) % m_bison_endarrere.length;
+                frame = m_bison_endarrere[currentFrame];
+
+                this.canvas_x = frame.x;
+                this.canvas_y = frame.y;
+                this.canvas_w = frame.width;
+                this.canvas_h = frame.height;
+
+                this.frameContador = 0;
+            } else {
+                this.frameContador++;
+            }
+        } else if (this.endavant) {
+            if (this.frameContador >= this.frameDelay) {
+                currentFrame = (currentFrame + 1) % m_bison_endavant.length;
+                frame = m_bison_endavant[currentFrame];
+
+                this.canvas_x = frame.x;
+                this.canvas_y = frame.y;
+                this.canvas_w = frame.width;
+                this.canvas_h = frame.height;
+
+                this.frameContador = 0;
+            } else {
+                this.frameContador++;
+            }
         } else {
             if (this.frameContador >= this.frameDelay) {
                 currentFrame = (currentFrame + 1) % m_bison_base.length;
@@ -540,7 +594,7 @@ let player2 = function (x, y, width, height, imatge, barraVida) {
                 this.frameContador++;
             }
         }
-        console.log("tyu");
+
 
         this.dibuixa();
     }
@@ -652,6 +706,9 @@ document.addEventListener('keydown', (e) => {
     if (e.key == 'd') {
         blanka.dreta();
     }
+    if (e.key == 'w') {
+        blanka.saltar();
+    }
     if (e.key == 'r') {
         blanka.restarVida();
     }
@@ -663,8 +720,36 @@ document.addEventListener('keydown', (e) => {
     if (e.key == 'ArrowRight') {
         m_bison.dreta();
     }
+    if (e.key == 'ArrowUp') {
+        m_bison.saltar();
+    }
+
     if (e.key == 'Enter') {
         m_bison.restarVida();
+    }
+});
+
+document.addEventListener('keyup', (e) => {
+    // Tecles Jugador 1
+    if (e.key == 'a') {
+        blanka.endavant = false; 
+    }
+    if (e.key == 'd') {
+        blanka.endarrere = false;
+    }
+    if (e.key == 'w') {
+        blanka.salta = false;
+    }
+
+    // Tecles Jugador 2
+    if (e.key == 'ArrowLeft') {
+        m_bison.endavant = false; 
+    }
+    if (e.key == 'ArrowRight') {
+        m_bison.endarrere = false;
+    }
+    if (e.key == 'ArrowUp') {
+        m_bison.salta = false;
     }
 });
 

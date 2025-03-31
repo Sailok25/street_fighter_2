@@ -39,18 +39,30 @@ let blanka_derrota = [
     {x: 1049, y: 1928, width: 177, height: 102}
 ];
 
+let blanka_agochat = [
+    {x: 1478, y: 132, width: 93, height: 87 },
+    {x: 1580, y: 132, width: 86, height: 87 },
+    {x: 1678, y: 132, width: 85, height: 87 }
+];
+
 let blanka_endavant = [
-    {x: 335, y: 31, width: 82,height: 72},
-    {x: 439, y: 34, width: 79,height: 68},
-    {x: 542, y: 30, width: 77,height: 77},
-    {x: 639, y: 25, width: 86,height: 82},
-    {x: 751, y: 30, width: 77,height: 77},
-    {x: 852, y: 34, width: 79,height: 73},
-    {x: 1033, y: 26, width: 99,height: 77}
+    {x: 335, y: 26, width: 82, height: 81},
+    {x: 439, y: 26, width: 79, height: 81},
+    {x: 542, y: 26, width: 77, height: 81},
+    {x: 639, y: 26, width: 86, height: 81},
+    {x: 751, y: 26, width: 77, height: 81},
+    {x: 852, y: 26, width: 79, height: 81},
+    {x: 945, y: 26, width: 85, height: 81},
+    {x: 1033, y: 26, width: 99, height: 81},
 ];
 
 let blanka_endarrere = [
-    {x: 1232, y: 1913, width: 86,height: 113},
-    {x: 1327, y: 1896, width: 104,height: 130},
-    {x: 1439, y: 1875, width: 98,height: 151}
+    {x: 1033, y: 26, width: 99, height: 81},
+    {x: 945, y: 26, width: 85, height: 81},
+    {x: 852, y: 26, width: 79, height: 81},
+    {x: 751, y: 26, width: 77, height: 81},
+    {x: 639, y: 26, width: 86, height: 81},
+    {x: 542, y: 26, width: 77, height: 81},
+    {x: 439, y: 26, width: 79, height: 81},
+    {x: 335, y: 26, width: 82, height: 81},
 ];
