@@ -66,3 +66,23 @@ let blanka_endarrere = [
     {x: 439, y: 26, width: 79, height: 81},
     {x: 335, y: 26, width: 82, height: 81},
 ];
+
+let blanka_cop_puny = [
+    {x: 11, y: 433, width: 97, height: 97},
+    {x: 121, y: 433, width: 135, height: 97},
+    {x: 268, y: 433, width: 109, height: 97}
+];
+
+let blanka_cop_especial = [
+    {x: 16, y: 1000, width: 84, height: 84},
+    {x: 121, y: 1000, width: 96, height: 84},
+    {x: 245, y: 1000, width: 167, height: 84}
+];
+
+let blanka_patada = [
+    {x: 366, y: 733, width: 92, height: 85},
+    {x: 486, y: 733, width: 102, height: 85},
+    {x: 486, y: 733, width: 102, height: 85},
+    {x: 621, y: 733, width: 125, height: 85},
+    {x: 621, y: 733, width: 125, height: 85}
+];

@@ -244,20 +244,6 @@ let player1 = function (x, y, width, height, imatge, barraVida) {
             } else {
                 this.frameContador++;
             }
-        } else if (this.saltar) {
-            if (this.frameContador >= this.frameDelay) {
-                currentFrame = (currentFrame + 1) % blanka_saltar.length;
-                frame = blanka_saltar[currentFrame];
-
-                this.canvas_x = frame.x;
-                this.canvas_y = frame.y;
-                this.canvas_w = frame.width;
-                this.canvas_h = frame.height;
-
-                this.frameContador = 0;
-            } else {
-                this.frameContador++;
-            }
         } else if (this.cop_puny) {
             if (this.frameContador >= this.frameDelay) {
                 currentFrame = (currentFrame + 1) % blanka_cop_puny.length;
@@ -269,6 +255,10 @@ let player1 = function (x, y, width, height, imatge, barraVida) {
                 this.canvas_h = frame.height;
 
                 this.frameContador = 0;
+
+                if (currentFrame === blanka_cop_puny.length - 1) {
+                    this.cop_puny = false;
+                }
             } else {
                 this.frameContador++;
             }
@@ -283,6 +273,10 @@ let player1 = function (x, y, width, height, imatge, barraVida) {
                 this.canvas_h = frame.height;
 
                 this.frameContador = 0;
+
+                if (currentFrame === blanka_patada.length - 1) {
+                    this.patada = false;
+                }
             } else {
                 this.frameContador++;
             }
@@ -297,6 +291,10 @@ let player1 = function (x, y, width, height, imatge, barraVida) {
                 this.canvas_h = frame.height;
 
                 this.frameContador = 0;
+
+                if (currentFrame === blanka_cop_especial.length - 1) {
+                    this.cop_especial = false;
+                }
             } else {
                 this.frameContador++;
             }
@@ -746,7 +744,6 @@ document.addEventListener('keydown', (e) => {
     if (e.key == 'e') {
         blanka.cop_especial = true;
     }
-
     if (e.key == 'r') {
         blanka.restarVida();
     }
@@ -770,7 +767,6 @@ document.addEventListener('keydown', (e) => {
     if (e.key === '0') {
         m_bison.cop_especial = true;
     }
-
     if (e.key == 'Enter') {
         m_bison.restarVida();
     }
@@ -786,15 +782,6 @@ document.addEventListener('keyup', (e) => {
     }
     if (e.key == 'w') {
         blanka.salta = false;
-    }
-    if (e.key == 's') {
-        blanka.cop_puny = false;
-    }
-    if (e.key == 'f') {
-        blanka.patada = false;
-    }
-    if (e.key == 'g') {
-        blanka.cop_especial = false;
     }
 
     // Tecles Jugador 2

@@ -38,6 +38,7 @@ let m_bison_derrota = [
     {x: 1671, y: 524, width: 153, height: 70},
     {x: 1671, y: 524, width: 153, height: 70},   
     {x: 1671, y: 524, width: 153, height: 70},
+    {x: 1671, y: 524, width: 153, height: 70},
     {x: 1671, y: 524, width: 153, height: 70}
 ];
 
