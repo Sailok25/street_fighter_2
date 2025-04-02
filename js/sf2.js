@@ -9,6 +9,26 @@ let cantitatVictoriesP1 = 0; // Victòries del Jugador 1
 let cantitatVictoriesP2 = 0; // Victòries del Jugador 2
 let jocpausat = false; // Indica si el joc està en pausa
 let jocAcabat = false; // Indica si el joc ha acabat del tot (algu a guanyat)
+let escenariActual = 0; // Indica l'escenari actual
+
+
+// array per a les posicions amb els numeros del temporitzador
+const numerosTemps = [
+    num_0_temps, num_1_temps, num_2_temps, num_3_temps,
+    num_4_temps, num_5_temps, num_6_temps, num_7_temps,
+    num_8_temps, num_9_temps
+];
+
+// array amb les imatges dels escenaris
+const escenaris = [
+    { frames: escenari_campana, imatge: 'img/backgrounds/bg1.png' },
+    { frames: escenari_vegas, imatge: 'img/backgrounds/bg2.png' },
+    { frames: escenari_termas, imatge: 'img/backgrounds/bg3.png' },
+    { frames: escenari_templo, imatge: 'img/backgrounds/bg4.png' },
+    { frames: escenari_comunista, imatge: 'img/backgrounds/bg5.png' },
+    { frames: escenari_elefantes, imatge: 'img/backgrounds/bg6.png' },
+    { frames: escenari_barco, imatge: 'img/backgrounds/bg7.png' }
+];
 
 
 // Objecte escenari i els seus metodes
@@ -21,10 +41,11 @@ let stage = function (x, y, width, height, imatge) {
     this.frameContador = 0;
     this.frameDelay = 10;
 
-    let sprite = new Image();
-    sprite.src = this.imatge;
+    this.sprite = new Image();
+    this.sprite.src = this.imatge;
+
     this.dibuixa = function () {
-        ctx.drawImage(sprite,
+        ctx.drawImage(this.sprite,
             this.canvas_x,
             this.canvas_y,
             this.canvas_w,
@@ -39,9 +60,9 @@ let stage = function (x, y, width, height, imatge) {
     let currentFrame = 0;
     this.animacio = function () {
         if (this.frameContador >= this.frameDelay) {
-            //codi animacio
-            currentFrame = (currentFrame + 1) % escenari_campana.length;
-            frame = escenari_campana[currentFrame];
+            // Usar los frames del escenario actual
+            currentFrame = (currentFrame + 1) % escenaris[escenariActual].frames.length;
+            let frame = escenaris[escenariActual].frames[currentFrame];
 
             this.canvas_x = frame.x;
             this.canvas_y = frame.y;
@@ -53,9 +74,9 @@ let stage = function (x, y, width, height, imatge) {
             this.frameContador++;
         }
         this.dibuixa();
-        // interval_player1 = requestAnimationFrame(this.animacio.bind(this)); 
     }
 }
+
 
 // Objecte jugador1 i els seus metodes
 let player1 = function (x, y, width, height, imatge, barraVida) {
@@ -437,7 +458,7 @@ let player2 = function (x, y, width, height, imatge, barraVida) {
         if (this.parar_animacio) {
             return;
         }
-        
+
 
         if (this.victoria1) {
             if (this.frameContador >= 9) {
@@ -633,7 +654,6 @@ let player2 = function (x, y, width, height, imatge, barraVida) {
     }
 }
 
-
 // Objecte elements/objectes i els seus metodes
 let elements = function (x, y, width, height, imatge, tipusElement) {
     this.x = x;
@@ -681,6 +701,7 @@ let elements = function (x, y, width, height, imatge, tipusElement) {
     };
 };
 
+
 // Declaració de elements visuals a la pantalla
 let barra_p1_groga = new elements(35, 22, 145, 11, 'img/others/textos.png', barra_vida_groga_1);
 let barra_p2_groga = new elements(205, 22, 145, 11, 'img/others/textos.png', barra_vida_groga_2);
@@ -688,7 +709,7 @@ let barra_p2_vermella = new elements(35, 22, 145, 11, 'img/others/textos.png', b
 let barra_p1_vermella = new elements(205, 22, 145, 11, 'img/others/textos.png', barra_vida_vermella_2);
 let blanka = new player1(50, 122, 103, 95, 'img/characters/blanka_sprite2.png', barra_p1_groga);
 let m_bison = new player2(230, 120, 104, 92, 'img/characters/m_bison_sprite.png', barra_p2_groga);
-let escenari = new stage(0, 0, 384, 224, 'img/backgrounds/bg1.png');
+let escenari = new stage(0, 0, 384, 224, escenaris[escenariActual].imatge);
 let pose_victoria1 = new elements(3, 20, 14, 14, 'img/others/textos.png', pose_victoria);
 let pose_victoria2 = new elements(19, 20, 14, 14, 'img/others/textos.png', pose_victoria);
 let pose_victoria3 = new elements(368, 20, 14, 14, 'img/others/textos.png', pose_victoria);
@@ -713,6 +734,7 @@ let num_p1_text = new elements(192, 100, 9, 14, 'img/others/textos.png', num_p_1
 let num_p2_text = new elements(192, 100, 13, 14, 'img/others/textos.png', num_p_2);
 let player_text = new elements(112, 100, 75, 14, 'img/others/textos.png', player);
 
+
 //events de teclat
 document.addEventListener('keydown', (e) => {
     // Bloquejar controls si el joc está pausat o a acabat la partida
@@ -724,6 +746,12 @@ document.addEventListener('keydown', (e) => {
         return;
     }
 
+    // Canviar escenari amb la tecla '1'
+    if (e.key == '1') {
+        escenariActual = (escenariActual + 1) % escenaris.length;
+        escenari.imatge = escenaris[escenariActual].imatge; // Corregido aquí
+        escenari.sprite.src = escenari.imatge; // Actualizar la imagen del sprite
+    }
 
     // Tecles Jugador 1
     if (e.key == 'a') {
@@ -775,7 +803,7 @@ document.addEventListener('keydown', (e) => {
 document.addEventListener('keyup', (e) => {
     // Tecles Jugador 1
     if (e.key == 'a') {
-        blanka.endavant = false; 
+        blanka.endavant = false;
     }
     if (e.key == 'd') {
         blanka.endarrere = false;
@@ -786,7 +814,7 @@ document.addEventListener('keyup', (e) => {
 
     // Tecles Jugador 2
     if (e.key == 'ArrowLeft') {
-        m_bison.endavant = false; 
+        m_bison.endavant = false;
     }
     if (e.key == 'ArrowRight') {
         m_bison.endarrere = false;
@@ -947,13 +975,6 @@ function principal() {
 function esborrarCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
-
-// array per a les posicions amb els numeros del temporitzador
-const numerosTemps = [
-    num_0_temps, num_1_temps, num_2_temps, num_3_temps,
-    num_4_temps, num_5_temps, num_6_temps, num_7_temps,
-    num_8_temps, num_9_temps
-];
 
 // actualitza el temps comprobant el estat de les unitats i decimes
 function actualitzarTemps() {
