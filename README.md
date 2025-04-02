@@ -15,9 +15,15 @@
 - [x] Control letrero victories (apareix una ma de victoria cuan guanyes una ronda)
 - [x] Control temps al guanyar ronda (reiniciar a 99)
 - [x] Control jugador que ha guanyat: Mostrar el missatge *"[nomPersonatge] wins!"* quan un jugador guanyi.  
+- [x] Parar o reactivar la musica del joc amb una tecla (*"S"*).
 - [ ] Moviment de finestra (desplaçament per l'eçenari)
 - [ ] Col·lisió
-- [ ] Musica i efectes
+
+## MÚSICA I SONS
+- [x] Musica escenaris (*Blanka = "b" // M.Bison = "v"*)
+- [ ] Sons dels cops
+- [ ] Só dels rounds i fight
+- [ ] Só de la victoria / derrota
 
 
 ## 🎭 ANIMACIONS  
@@ -30,6 +36,7 @@
 - [x] Animació de patada: Quan el jugador prem una tecla (*P1 = "F" / P2 = "9(nou)"*).
 
 ## 🥚 EASTER EGG  
-- [ ] Control d'escenaris: Canviar escenari prement una tecla (*Ex: números 1, 2, 3... o "M" per moure*).  
+- [x] Control d'escenaris: Canviar escenari prement una tecla (*Núm 1*).  
 - [ ] Mode inmortal (teclejant 'god')
-- [ ] Parar o reactivar la musica del joc amb la tecla S
+- [ ] Bonus cotxe (obj cotxe es va destruint)
+- [ ] Crossover
