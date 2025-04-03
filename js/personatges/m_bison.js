@@ -100,3 +100,26 @@ let m_bison_endarrere = [
     { x: 425, y: 25, width: 68, height: 102 },
     { x: 346, y: 25, width: 66, height: 102 }
 ];
+
+let m_bison_electrocutat = [
+    { x: 1840, y: 145, width: 94, height: 112 },
+    { x: 1946, y: 145, width: 105, height: 112 },
+    { x: 1840, y: 145, width: 94, height: 112 },
+    { x: 1946, y: 145, width: 105, height: 112 },    
+    { x: 1840, y: 145, width: 94, height: 112 },
+    { x: 1946, y: 145, width: 105, height: 112 },
+    {x: 1840, y: 145, width: 94, height: 112 } 
+];
+
+let m_bison_rep_patada = [
+    { x: 1133, y: 401, width: 103, height: 96 },
+    { x: 1252, y: 401, width: 107, height: 96 },
+    { x: 1373, y: 401, width: 112, height: 96 },
+    { x: 1494, y: 401, width: 124, height: 96 }
+];
+
+let m_bison_rep_punyetazo = [
+    { x: 1465, y: 289, width: 99, height: 94 },
+    { x: 1586, y: 289, width: 92, height: 94 },
+    { x: 1693, y: 289, width: 86, height: 94 }
+];

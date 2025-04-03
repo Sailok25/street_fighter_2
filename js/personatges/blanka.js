@@ -31,14 +31,6 @@ let blanka_victoria2 = [
     {x: 1679, y: 2076, width: 103, height: 95}
 ];
 
-let blanka_derrota = [
-    {x: 509, y: 1928, width: 96, height: 102},
-    {x: 615, y: 1928, width: 118, height: 102},
-    {x: 742, y: 1928, width: 127, height: 102},
-    {x: 879, y: 1928, width: 163, height: 102},
-    {x: 1049, y: 1928, width: 177, height: 102}
-];
-
 let blanka_agochat = [
     {x: 1478, y: 132, width: 93, height: 87 },
     {x: 1580, y: 132, width: 86, height: 87 },
@@ -74,9 +66,15 @@ let blanka_cop_puny = [
 ];
 
 let blanka_cop_especial = [
-    {x: 16, y: 1000, width: 84, height: 84},
-    {x: 121, y: 1000, width: 96, height: 84},
-    {x: 245, y: 1000, width: 167, height: 84}
+    {x: 4, y: 1246, width: 93, height: 84},
+    {x: 106, y: 1246, width: 86, height: 84},
+    {x: 199, y: 1246, width: 136, height: 84},
+    {x: 344, y: 1246, width: 85, height: 84},
+    {x: 199, y: 1246, width: 136, height: 84},
+    {x: 344, y: 1246, width: 85, height: 84},
+    {x: 199, y: 1246, width: 136, height: 84},
+    {x: 344, y: 1246, width: 85, height: 84},
+    {x: 4, y: 1246, width: 93, height: 84}
 ];
 
 let blanka_patada = [
@@ -85,4 +83,25 @@ let blanka_patada = [
     {x: 486, y: 733, width: 102, height: 85},
     {x: 621, y: 733, width: 125, height: 85},
     {x: 621, y: 733, width: 125, height: 85}
+];
+
+let blanka_derrota = [
+    {x: 509, y: 1928, width: 96, height: 102},
+    {x: 615, y: 1928, width: 118, height: 102},
+    {x: 742, y: 1928, width: 127, height: 102},
+    {x: 879, y: 1928, width: 163, height: 102},
+    {x: 1049, y: 1928, width: 177, height: 102}
+];
+
+let blanka_rep_patada = [
+    {x: 448, y: 1625, width: 96, height: 91},
+    {x: 549, y: 1625, width: 100, height: 91},
+    {x: 655, y: 1625, width: 106, height: 91},
+    {x: 767, y: 1625, width: 96, height: 91}
+];
+
+let blanka_rep_punyetazo = [
+    {x: 869, y: 1662, width: 307, height: 94},
+    {x: 958, y: 1430, width: 101, height: 94},
+    {x: 1067, y: 1430, width: 109, height: 94}
 ];

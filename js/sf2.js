@@ -22,12 +22,8 @@ const numerosTemps = [
 // array amb les imatges dels escenaris
 const escenaris = [
     { frames: escenari_campana, imatge: 'img/backgrounds/bg1.png' },
-    { frames: escenari_vegas, imatge: 'img/backgrounds/bg2.png' },
-    { frames: escenari_termas, imatge: 'img/backgrounds/bg3.png' },
-    { frames: escenari_templo, imatge: 'img/backgrounds/bg4.png' },
     { frames: escenari_comunista, imatge: 'img/backgrounds/bg5.png' },
     { frames: escenari_elefantes, imatge: 'img/backgrounds/bg6.png' },
-    { frames: escenari_barco, imatge: 'img/backgrounds/bg7.png' }
 ];
 
 
@@ -91,7 +87,8 @@ let player1 = function (x, y, width, height, imatge, barraVida) {
     this.velocitat = 3;
     this.dreta = true;
     this.frameContador = 0;
-    this.frameDelay = 8;
+    this.frameDelay = 7;
+    this.frameDelaySpecial = 3;
 
     this.base = false;
     this.victoria1 = false;
@@ -111,6 +108,14 @@ let player1 = function (x, y, width, height, imatge, barraVida) {
     this.mostrarWinGran = false;
     this.esta_saltant = false;
     this.esta_aterritzant = false;
+
+    this.danyPunyetazo = 15;
+    this.danyPatada = 10;
+    this.danyCopEspecial = 20;
+    this.danyBase = 0;
+    this.repPatada = false;
+    this.repCopEspecial = false;
+    this.repPunyetazo = false;
 
     let sprite = new Image();
     sprite.src = this.imatge;
@@ -136,6 +141,11 @@ let player1 = function (x, y, width, height, imatge, barraVida) {
         //base
         if (this.canvas_h == 98) {
             this.y = 122;
+        }
+
+        // cop especial
+        if (this.canvas_h == 84) {
+            this.y = 135;
         }
 
 
@@ -302,7 +312,7 @@ let player1 = function (x, y, width, height, imatge, barraVida) {
                 this.frameContador++;
             }
         } else if (this.cop_especial) {
-            if (this.frameContador >= this.frameDelay) {
+            if (this.frameContador >= this.frameDelaySpecial) {
                 currentFrame = (currentFrame + 1) % blanka_cop_especial.length;
                 frame = blanka_cop_especial[currentFrame];
 
@@ -380,6 +390,14 @@ let player2 = function (x, y, width, height, imatge, barraVida) {
     this.mostrarWinGran = false;
     this.esta_saltant = false;
     this.esta_aterritzant = false;
+
+    this.danyPunyetazo = 15;
+    this.danyPatada = 10;
+    this.danyCopEspecial = 20;
+    this.danyBase = 0;
+    this.repPatada = false;
+    this.repCopEspecial = false;
+    this.repPunyetazo = false;
 
     let sprite = new Image();
     sprite.src = this.imatge;
@@ -566,6 +584,8 @@ let player2 = function (x, y, width, height, imatge, barraVida) {
                 if (currentFrame === m_bison_cop_especial.length - 1) {
                     this.cop_especial = false;
                 }
+
+                this.x -= this.velocitat + 20;
 
             } else {
                 this.frameContador++;
@@ -831,6 +851,7 @@ function inici() {
     ctx = canvas.getContext('2d');
 
     principal();
+    stage_mbison.play();
 }
 
 // crida de metodes i elements de pantalla
@@ -940,6 +961,8 @@ function principal() {
 
     controlarVida();
     dibuixarVictories();
+
+
 
     // ready_text.animacio();
     // fight_text.animacio();
