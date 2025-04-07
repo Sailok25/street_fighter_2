@@ -10,6 +10,8 @@ let cantitatVictoriesP2 = 0; // Victòries del Jugador 2
 let jocpausat = false; // Indica si el joc està en pausa
 let jocAcabat = false; // Indica si el joc ha acabat del tot (algu a guanyat)
 let escenariActual = 0; // Indica l'escenari actual
+let rondaActual = 1; // Indica la ronda actual
+let jocPausatPerSo = false; // Indica si el joc està pausat per so
 
 
 // array per a les posicions amb els numeros del temporitzador
@@ -73,7 +75,6 @@ let stage = function (x, y, width, height, imatge) {
     }
 }
 
-
 // Objecte jugador1 i els seus metodes
 let player1 = function (x, y, width, height, imatge, barraVida) {
     this.x = x;
@@ -97,7 +98,6 @@ let player1 = function (x, y, width, height, imatge, barraVida) {
     this.cop_puny = false;
     this.patada = false;
     this.cop_especial = false;
-    this.salta = false;
     this.en_timeover = false;
     this.endarrere = false;
     this.endavant = false;
@@ -106,7 +106,6 @@ let player1 = function (x, y, width, height, imatge, barraVida) {
     this.parar_animacio = false;
     this.mostrarWinPetit = false;
     this.mostrarWinGran = false;
-    this.esta_saltant = false;
     this.esta_aterritzant = false;
 
     this.danyPunyetazo = 15;
@@ -379,7 +378,6 @@ let player2 = function (x, y, width, height, imatge, barraVida) {
     this.cop_puny = false;
     this.patada = false;
     this.cop_especial = false;
-    this.salta = false;
     this.en_timeover = false;
     this.endarrere = false;
     this.endavant = false;
@@ -388,7 +386,6 @@ let player2 = function (x, y, width, height, imatge, barraVida) {
     this.parar_animacio = false;
     this.mostrarWinPetit = false;
     this.mostrarWinGran = false;
-    this.esta_saltant = false;
     this.esta_aterritzant = false;
 
     this.danyPunyetazo = 15;
@@ -402,12 +399,10 @@ let player2 = function (x, y, width, height, imatge, barraVida) {
     let sprite = new Image();
     sprite.src = this.imatge;
 
-
     this.dibuixa = function () {
         // derrota
         if (this.canvas_h == 70) {
             this.y = 150;
-            console.log(this.y);
         } else {
             this.y = 120;
         }
@@ -422,7 +417,6 @@ let player2 = function (x, y, width, height, imatge, barraVida) {
         if (this.canvas_h == 96) {
             this.y = 120;
         }
-
 
         ctx.drawImage(sprite,
             this.canvas_x,
@@ -460,15 +454,6 @@ let player2 = function (x, y, width, height, imatge, barraVida) {
     this.dreta = function () {
         this.x += this.velocitat;
         this.endarrere = true;
-    }
-
-    this.saltar = function () {
-        if (!this.saltant && !this.aterritzant) { // Si no esta saltant ni aterrant fara el salt
-            this.saltant = true;
-            this.velocitatSalt = 15; // Velocidad inicial del salto
-            this.alturaMaxima = 150; // Altura máxima del salto
-            this.posicioInicialY = this.y;
-        }
     }
 
     let currentFrame = 0;
@@ -587,20 +572,6 @@ let player2 = function (x, y, width, height, imatge, barraVida) {
 
                 this.x -= this.velocitat + 20;
 
-            } else {
-                this.frameContador++;
-            }
-        } else if (this.salta) {
-            if (this.frameContador >= this.frameDelay) {
-                currentFrame = (currentFrame + 1) % m_bison_salta.length;
-                frame = m_bison_salta[currentFrame];
-
-                this.canvas_x = frame.x;
-                this.canvas_y = frame.y;
-                this.canvas_w = frame.width;
-                this.canvas_h = frame.height;
-
-                this.frameContador = 0;
             } else {
                 this.frameContador++;
             }
@@ -780,9 +751,6 @@ document.addEventListener('keydown', (e) => {
     if (e.key == 'd') {
         blanka.dreta();
     }
-    if (e.key == 'w') {
-        blanka.saltar();
-    }
     if (e.key == 'c') {
         blanka.cop_puny = true;
     }
@@ -792,9 +760,6 @@ document.addEventListener('keydown', (e) => {
     if (e.key == 'e') {
         blanka.cop_especial = true;
     }
-    if (e.key == 'r') {
-        blanka.restarVida();
-    }
 
     // Tecles Jugador 2
     if (e.key == 'ArrowLeft') {
@@ -802,9 +767,6 @@ document.addEventListener('keydown', (e) => {
     }
     if (e.key == 'ArrowRight') {
         m_bison.dreta();
-    }
-    if (e.key == 'ArrowUp') {
-        m_bison.saltar();
     }
     if (e.key == '8') {
         m_bison.cop_puny = true;
@@ -815,8 +777,18 @@ document.addEventListener('keydown', (e) => {
     if (e.key === '0') {
         m_bison.cop_especial = true;
     }
-    if (e.key == 'Enter') {
+
+    //restar vida
+    if (e.key == 'r') {
+        blanka.restarVida();
+    }
+    if (e.key == 't') {
         m_bison.restarVida();
+    }
+
+    //canviar finestra
+    if (e.key == 'w') {
+        iniciFinal();
     }
 });
 
@@ -828,9 +800,6 @@ document.addEventListener('keyup', (e) => {
     if (e.key == 'd') {
         blanka.endarrere = false;
     }
-    if (e.key == 'w') {
-        blanka.salta = false;
-    }
 
     // Tecles Jugador 2
     if (e.key == 'ArrowLeft') {
@@ -839,12 +808,9 @@ document.addEventListener('keyup', (e) => {
     if (e.key == 'ArrowRight') {
         m_bison.endarrere = false;
     }
-    if (e.key == 'ArrowUp') {
-        m_bison.salta = false;
-    }
 });
 
-document.addEventListener('DOMContentLoaded', inici);
+// document.addEventListener('DOMContentLoaded', inici);
 
 function inici() {
     canvas = document.getElementById('canvas');
@@ -852,6 +818,12 @@ function inici() {
 
     principal();
     stage_mbison.play();
+    inici_joc.stop();
+    p1Audio.stop();
+    p2Audio.stop();
+
+    reproduirSonidoRondaActual();
+    rondaActual ++;
 }
 
 // crida de metodes i elements de pantalla
@@ -1098,11 +1070,23 @@ function dibuixarVictories() {
     }
 }
 
+
+// Función para reproducir el sonido correspondiente a la ronda actual
+function reproduirSonidoRondaActual() {
+    if (rondaActual === 1) {
+        round1.play();
+    } else if (rondaActual === 2) {
+        round2.play();
+    } else if (rondaActual === 3) {
+        round3.play();
+    }
+}
+
 // Reiniciar la animación después de la pausa
 function pararJocXRonda() {
     clearInterval(intervalTemps);
 
-    //Pausa previa a finalitzar el joc del tot
+    // Pausa previa a finalitzar el joc del tot
     if (cantitatVictoriesP1 >= maxVictories || cantitatVictoriesP2 >= maxVictories) {
         return;
     }
@@ -1131,8 +1115,13 @@ function pararJocXRonda() {
         unitats = 9;
         actualitzarTempsPantalla();
         iniciarTemporitzador();
+
+        reproduirSonidoRondaActual();
+        rondaActual++;
+
     }, 3000);
 }
+
 
 // Fica el joc en pausa, neteja el interval y revisa que al joc apareixi el text "Game over"
 function jocEnPausa() {
