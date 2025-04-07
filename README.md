@@ -7,6 +7,7 @@
 - [x] Noms dels jugadors: Visualitzar el nom de cada jugador durant la partida.  
 - [x] Lletrero de "Players": Dissenyar un indicador clar per als jugadors.  
 - [x] Victòries: Comptabilitzar i mostrar les victòries de cada jugador.  
+- [x] 3 menus (inici joc --> escollir personatge --> partida --> final)
 
 ## 💻 PROGRAMACIÓ  
 - [x] Programar el contador
@@ -22,8 +23,10 @@
 ## MÚSICA I SONS
 - [x] Musica escenaris (*Blanka = "b" // M.Bison = "v"*)
 - [ ] Sons dels cops
-- [ ] Só dels rounds i fight
+- [x] Só dels rounds
 - [ ] Só de la victoria / derrota
+- [-] Só dels menus (*Inici // Final*)
+- [x] Só escollir personatge (anar passant per damunt)
 
 
 ## 🎭 ANIMACIONS  
@@ -34,6 +37,7 @@
 - [x] Animació de cop de puny: Quan el jugador prem una tecla (*P1 = "C" / P2 = "8(vuit)"*).  
 - [x] Animació de cop especial: Quan el jugador prem una tecla (*P1 = "E" / P2 = "0(zero)"*). 
 - [x] Animació de patada: Quan el jugador prem una tecla (*P1 = "F" / P2 = "9(nou)"*).
+- [-] Animació de rebre cops: Quan un jugador rep un cop (colisió), s'activa un efecte de rebre el cop
 
 ## 🥚 EASTER EGG  
 - [x] Control d'escenaris: Canviar escenari prement una tecla (*Núm 1*).  
