@@ -39,9 +39,12 @@ function iniciPersonatge() {
             p1Audio.play();
         } else if (e.key == 'Enter') {
             console.log('Iniciant el joc...');
+            clearInterval(interval);
             inici();
         }
     });
+
+
 }
 
 function principalPersonatges() {

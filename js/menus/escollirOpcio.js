@@ -31,6 +31,10 @@ function iniciMenus() {
                 clearInterval(interval);
                 iniciPersonatge();
             }
+            if (posicioAvioneta == 3) {
+                clearInterval(interval);
+                iniciCrossover();
+            }
         }
     });
 }

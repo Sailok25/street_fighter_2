@@ -115,3 +115,19 @@ let escenari_barco = [
     {x: 1242, y: 0, width: 621,height: 224},   
     {x: 2484, y: 0, width: 621,height: 224}
 ];
+
+/* img/backgrounds --> fondoOP */
+let escenari_crossover = [
+    // {x: 0, y: 0, width: 256, height: 176}, // mal posicionat :V
+    {x: 256, y: 0, width: 256, height: 176},
+    {x: 512, y: 0, width: 256, height: 176},
+    {x: 768, y: 0, width: 256, height: 176},
+    {x: 1024, y: 0, width: 256, height: 176},
+    {x: 1280, y: 0, width: 256, height: 176},
+    {x: 1536, y: 0, width: 256, height: 176},
+    {x: 1792, y: 0, width: 256, height: 176},
+    {x: 2048, y: 0, width: 256, height: 176},
+    {x: 2304, y: 0, width: 256, height: 176},
+    {x: 2560, y: 0, width: 256, height: 176},
+    {x: 2816, y: 0, width: 256, height: 176}
+];

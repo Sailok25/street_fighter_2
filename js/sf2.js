@@ -12,6 +12,8 @@ let jocAcabat = false; // Indica si el joc ha acabat del tot (algu a guanyat)
 let escenariActual = 0; // Indica l'escenari actual
 let rondaActual = 1; // Indica la ronda actual
 let jocPausatPerSo = false; // Indica si el joc està pausat per so
+let collisio = false; // Indica si hi ha col·lisió entre els jugadors
+let estaPegant = false; // Indica si el jugador està pegant
 
 
 // array per a les posicions amb els numeros del temporitzador
@@ -108,9 +110,9 @@ let player1 = function (x, y, width, height, imatge, barraVida) {
     this.mostrarWinGran = false;
     this.esta_aterritzant = false;
 
-    this.danyPunyetazo = 15;
-    this.danyPatada = 10;
-    this.danyCopEspecial = 20;
+    this.danyPunyetazo = 2;
+    this.danyPatada = 4;
+    this.danyCopEspecial = 6;
     this.danyBase = 0;
     this.repPatada = false;
     this.repCopEspecial = false;
@@ -328,6 +330,60 @@ let player1 = function (x, y, width, height, imatge, barraVida) {
             } else {
                 this.frameContador++;
             }
+        } else if (this.repCopEspecial) {
+            if (this.frameContador >= this.frameDelaySpecial) {
+                currentFrame = (currentFrame + 1) % blanka_rep_patada.length;
+                frame = blanka_rep_patada[currentFrame];
+
+                this.canvas_x = frame.x;
+                this.canvas_y = frame.y;
+                this.canvas_w = frame.width;
+                this.canvas_h = frame.height;
+
+                this.frameContador = 0;
+
+                if (currentFrame === blanka_rep_patada.length - 1) {
+                    this.repCopEspecial = false;
+                }
+            } else {
+                this.frameContador++;
+            }
+        } else if (this.repPunyetazo) {
+            if (this.frameContador >= this.frameDelaySpecial) {
+                currentFrame = (currentFrame + 1) % blanka_rep_punyetazo.length;
+                frame = blanka_rep_punyetazo[currentFrame];
+
+                this.canvas_x = frame.x;
+                this.canvas_y = frame.y;
+                this.canvas_w = frame.width;
+                this.canvas_h = frame.height;
+
+                this.frameContador = 0;
+
+                if (currentFrame === blanka_rep_punyetazo.length - 1) {
+                    this.repPunyetazo = false;
+                }
+            } else {
+                this.frameContador++;
+            }
+        } else if (this.repPatada) {
+            if (this.frameContador >= this.frameDelaySpecial) {
+                currentFrame = (currentFrame + 1) % blanka_rep_patada.length;
+                frame = blanka_rep_patada[currentFrame];
+
+                this.canvas_x = frame.x;
+                this.canvas_y = frame.y;
+                this.canvas_w = frame.width;
+                this.canvas_h = frame.height;
+
+                this.frameContador = 0;
+
+                if (currentFrame === blanka_rep_patada.length - 1) {
+                    this.repPatada = false;
+                }
+            } else {
+                this.frameContador++;
+            }
         } else {
             if (this.frameContador >= this.frameDelay) {
                 currentFrame = (currentFrame + 1) % blanka_base.length;
@@ -388,9 +444,9 @@ let player2 = function (x, y, width, height, imatge, barraVida) {
     this.mostrarWinGran = false;
     this.esta_aterritzant = false;
 
-    this.danyPunyetazo = 15;
-    this.danyPatada = 10;
-    this.danyCopEspecial = 20;
+    this.danyPunyetazo = 2;
+    this.danyPatada = 4;
+    this.danyCopEspecial = 6;
     this.danyBase = 0;
     this.repPatada = false;
     this.repCopEspecial = false;
@@ -416,6 +472,11 @@ let player2 = function (x, y, width, height, imatge, barraVida) {
         //base
         if (this.canvas_h == 96) {
             this.y = 120;
+        }
+
+        // cop especial
+        if (this.canvas_h == 84) {
+            this.y = 135;
         }
 
         ctx.drawImage(sprite,
@@ -617,6 +678,63 @@ let player2 = function (x, y, width, height, imatge, barraVida) {
             } else {
                 this.frameContador++;
             }
+        } else if (this.repCopEspecial) {
+            if (this.frameContador >= this.frameDelay) {
+                currentFrame = (currentFrame + 1) % m_bison_electrocutat.length;
+                frame = m_bison_electrocutat[currentFrame];
+
+                this.canvas_x = frame.x;
+                this.canvas_y = frame.y;
+                this.canvas_w = frame.width;
+                this.canvas_h = frame.height;
+
+                this.frameContador = 0;
+
+                if (currentFrame === m_bison_electrocutat.length - 1) {
+                    this.repCopEspecial = false;
+                }
+
+            } else {
+                this.frameContador++;
+            }
+        } else if (this.repPatada) {
+            if (this.frameContador >= this.frameDelay) {
+                currentFrame = (currentFrame + 1) % m_bison_rep_patada.length;
+                frame = m_bison_rep_patada[currentFrame];
+
+                this.canvas_x = frame.x;
+                this.canvas_y = frame.y;
+                this.canvas_w = frame.width;
+                this.canvas_h = frame.height;
+
+                this.frameContador = 0;
+
+                if (currentFrame === m_bison_rep_patada.length - 1) {
+                    this.repPatada = false;
+                }
+
+            } else {
+                this.frameContador++;
+            }
+        } else if (this.repPunyetazo) {
+            if (this.frameContador >= this.frameDelay) {
+                currentFrame = (currentFrame + 1) % m_bison_rep_punyetazo.length;
+                frame = m_bison_rep_punyetazo[currentFrame];
+
+                this.canvas_x = frame.x;
+                this.canvas_y = frame.y;
+                this.canvas_w = frame.width;
+                this.canvas_h = frame.height;
+
+                this.frameContador = 0;
+
+                if (currentFrame === m_bison_rep_punyetazo.length - 1) {
+                    this.repPunyetazo = false;
+                }
+
+            } else {
+                this.frameContador++;
+            }
         } else {
             if (this.frameContador >= this.frameDelay) {
                 currentFrame = (currentFrame + 1) % m_bison_base.length;
@@ -690,6 +808,24 @@ let elements = function (x, y, width, height, imatge, tipusElement) {
 
         this.dibuixa(ctx);
     };
+
+    this.controlCrossover = function () {
+        if (this.frameContador >= this.frameDelay) {
+            //codi animacio
+            currentFrame = (currentFrame + 1) % escenari_crossover.length;
+            frame = escenari_crossover[currentFrame];
+
+            this.canvas_x = frame.x;
+            this.canvas_y = frame.y;
+            this.canvas_w = frame.width;
+            this.canvas_h = frame.height;
+
+            this.frameContador = 0;
+        } else {
+            this.frameContador++;
+        }
+        this.dibuixa();
+    }
 };
 
 
@@ -778,14 +914,6 @@ document.addEventListener('keydown', (e) => {
         m_bison.cop_especial = true;
     }
 
-    //restar vida
-    if (e.key == 'r') {
-        blanka.restarVida();
-    }
-    if (e.key == 't') {
-        m_bison.restarVida();
-    }
-
     //canviar finestra
     if (e.key == 'w') {
         iniciFinal();
@@ -823,7 +951,7 @@ function inici() {
     p2Audio.stop();
 
     reproduirSonidoRondaActual();
-    rondaActual ++;
+    rondaActual++;
 }
 
 // crida de metodes i elements de pantalla
@@ -933,6 +1061,7 @@ function principal() {
 
     controlarVida();
     dibuixarVictories();
+    detectarColisio();
 
 
 
@@ -1122,7 +1251,6 @@ function pararJocXRonda() {
     }, 3000);
 }
 
-
 // Fica el joc en pausa, neteja el interval y revisa que al joc apareixi el text "Game over"
 function jocEnPausa() {
     jocpausat = true;
@@ -1136,4 +1264,41 @@ function jocEnMarcha() {
     estatContador = false;
     iniciarTemporitzador();
     principal();
+}
+
+function detectarColisio() {
+    if (blanka.canvas_w + blanka.x > m_bison.x) {
+
+        if (blanka.cop_puny && !m_bison.repPunyetazo) {
+            m_bison.vida -= blanka.danyPunyetazo;
+            m_bison.barraVida.width = m_bison.vida;
+            m_bison.repPunyetazo = true;
+            console.log('Colisio punyetazo');
+        } else if (blanka.patada && !m_bison.repPatada) {
+            m_bison.vida -= blanka.danyPatada;
+            m_bison.barraVida.width = m_bison.vida;
+            m_bison.repPatada = true;
+            console.log('Colisio patada');
+        } else if (blanka.cop_especial && !m_bison.repCopEspecial) {
+            m_bison.vida -= blanka.danyCopEspecial;
+            m_bison.barraVida.width = m_bison.vida;
+            m_bison.repCopEspecial = true;
+            console.log('Colisio cop especial');
+        } else if (m_bison.cop_puny && !blanka.repPunyetazo) {
+            blanka.vida -= m_bison.danyPunyetazo;
+            blanka.barraVida.width = blanka.vida;
+            blanka.repPunyetazo = true;
+            console.log('Colisio punyetazo');
+        } else if (m_bison.patada && !blanka.repPatada) {
+            blanka.vida -= m_bison.danyPatada;
+            blanka.barraVida.width = blanka.vida;
+            blanka.repPatada = true;
+            console.log('Colisio patada');
+        } else if (m_bison.cop_especial && !blanka.repCopEspecial) {
+            blanka.vida -= m_bison.danyCopEspecial;
+            blanka.barraVida.width = blanka.vida;
+            blanka.repCopEspecial = true;
+            console.log('Colisio cop especial');
+        }
+    }
 }
