@@ -110,9 +110,9 @@ let player1 = function (x, y, width, height, imatge, barraVida) {
     this.mostrarWinGran = false;
     this.esta_aterritzant = false;
 
-    this.danyPunyetazo = 2;
-    this.danyPatada = 4;
-    this.danyCopEspecial = 6;
+    this.danyPunyetazo = 15;
+    this.danyPatada = 10;
+    this.danyCopEspecial = 20;
     this.danyBase = 0;
     this.repPatada = false;
     this.repCopEspecial = false;
@@ -444,9 +444,9 @@ let player2 = function (x, y, width, height, imatge, barraVida) {
     this.mostrarWinGran = false;
     this.esta_aterritzant = false;
 
-    this.danyPunyetazo = 2;
-    this.danyPatada = 4;
-    this.danyCopEspecial = 6;
+    this.danyPunyetazo = 15;
+    this.danyPatada = 10;
+    this.danyCopEspecial = 20;
     this.danyBase = 0;
     this.repPatada = false;
     this.repCopEspecial = false;
@@ -913,11 +913,6 @@ document.addEventListener('keydown', (e) => {
     if (e.key === '0') {
         m_bison.cop_especial = true;
     }
-
-    //canviar finestra
-    if (e.key == 'w') {
-        iniciFinal();
-    }
 });
 
 document.addEventListener('keyup', (e) => {
@@ -952,6 +947,10 @@ function inici() {
 
     reproduirSonidoRondaActual();
     rondaActual++;
+
+    if (blanka.ha_guanyat || m_bison.ha_guanyat) {
+        iniciFinal();
+    }
 }
 
 // crida de metodes i elements de pantalla
@@ -1062,8 +1061,6 @@ function principal() {
     controlarVida();
     dibuixarVictories();
     detectarColisio();
-
-
 
     // ready_text.animacio();
     // fight_text.animacio();
@@ -1273,32 +1270,26 @@ function detectarColisio() {
             m_bison.vida -= blanka.danyPunyetazo;
             m_bison.barraVida.width = m_bison.vida;
             m_bison.repPunyetazo = true;
-            console.log('Colisio punyetazo');
         } else if (blanka.patada && !m_bison.repPatada) {
             m_bison.vida -= blanka.danyPatada;
             m_bison.barraVida.width = m_bison.vida;
             m_bison.repPatada = true;
-            console.log('Colisio patada');
         } else if (blanka.cop_especial && !m_bison.repCopEspecial) {
             m_bison.vida -= blanka.danyCopEspecial;
             m_bison.barraVida.width = m_bison.vida;
             m_bison.repCopEspecial = true;
-            console.log('Colisio cop especial');
         } else if (m_bison.cop_puny && !blanka.repPunyetazo) {
             blanka.vida -= m_bison.danyPunyetazo;
             blanka.barraVida.width = blanka.vida;
             blanka.repPunyetazo = true;
-            console.log('Colisio punyetazo');
         } else if (m_bison.patada && !blanka.repPatada) {
             blanka.vida -= m_bison.danyPatada;
             blanka.barraVida.width = blanka.vida;
             blanka.repPatada = true;
-            console.log('Colisio patada');
         } else if (m_bison.cop_especial && !blanka.repCopEspecial) {
             blanka.vida -= m_bison.danyCopEspecial;
             blanka.barraVida.width = blanka.vida;
             blanka.repCopEspecial = true;
-            console.log('Colisio cop especial');
         }
     }
 }

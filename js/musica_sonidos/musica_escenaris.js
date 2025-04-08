@@ -13,8 +13,14 @@ function inici(){
         loop: true
     });
 
+    victoriaTotal = new Howl({
+        src: ['audios/sonidos/victoria/victoria_total.wav'],
+        loop: false
+    });
+
     iniciar_musica_inici();
     iniciar_musica_escenaris();
+    iniciar_victoria_total();
 }
 
 function iniciar_musica_escenaris(){
@@ -37,7 +43,6 @@ function iniciar_musica_escenaris(){
     });
 }
 
-
 function iniciar_musica_inici(){
     let control_musica_inici = true;
     
@@ -53,6 +58,26 @@ function iniciar_musica_inici(){
             console.log("Activant musica d'inici");
             inici_joc.play();
             control_musica_inici = true;
+            }
+        }
+    });
+}
+
+function iniciar_victoria_total(){
+    let control_victoria = true;
+    
+    document.addEventListener('keydown', (tecla)=>{
+
+        if (tecla.key == 'v'){
+            console.log(control_victoria)
+            if(control_victoria){
+                console.log("Aturant musica de victoria total");
+                victoriaTotal.pause();
+                control_victoria = false;
+            }else{
+            console.log("Activant musica de victoria total");
+            victoriaTotal.play();
+            control_victoria = true;
             }
         }
     });

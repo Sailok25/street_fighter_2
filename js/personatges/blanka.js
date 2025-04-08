@@ -101,7 +101,7 @@ let blanka_rep_patada = [
 ];
 
 let blanka_rep_punyetazo = [
-    {x: 869, y: 1662, width: 307, height: 94},
-    {x: 958, y: 1430, width: 101, height: 94},
-    {x: 1067, y: 1430, width: 109, height: 94}
+    {x: 869, y: 1623, width: 84, height: 94},
+    {x: 958, y: 1623, width: 101, height: 94},
+    {x: 1067, y: 1623, width: 107, height: 94}
 ];

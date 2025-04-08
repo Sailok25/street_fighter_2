@@ -50,8 +50,6 @@ let m_bison_cop_puny = [
 
 let m_bison_patada = [
     {x: 1, y: 298, width: 94, height: 100},
-    {x: 1, y: 298, width: 94, height: 100},
-    {x: 100, y: 298, width: 138, height: 100},
     {x: 100, y: 298, width: 138, height: 100},
     {x: 248, y: 298, width: 83, height: 100},
     {x: 248, y: 298, width: 83, height: 100}

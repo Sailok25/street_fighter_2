@@ -15,6 +15,7 @@ function iniciFinal() {
     ctx = canvas.getContext('2d');
 
     principalFinal();
+    stage_mbison.stop();
     victoriaTotal.play();
 }
 
@@ -24,7 +25,6 @@ function esborrarCanvas() {
 
 function principalFinal() {
     esborrarCanvas();
-    console.log("Dibujando pantalla final...");
 
     imgblankaGuanya.animacio();
     imgMBisonPerd.animacio();
