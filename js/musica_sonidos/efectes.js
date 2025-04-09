@@ -26,30 +26,30 @@
         });
 
 
-        // putenyasoBlanka = new Howl({ // so de putenyaso blanka
-        //     src: ['audios/sonidos/blanka/putenyaso.mp3'],
-        // });
-        // putenyasoMBison = new Howl({ // so de putenyaso mBison
-        //     src: ['audios/sonidos/mBison/putenyaso.mp3'],
-        // });
-        // patadaBlanka = new Howl({ // so de patada blanka
-        //     src: ['audios/sonidos/blanka/patada.mp3'],
-        // });
-        // patadaMBison = new Howl({ // so de patada mBison
-        //     src: ['audios/sonidos/mBison/patada.mp3'],
-        // });
-        // especialBlanka = new Howl({ // so de especial blanka
-        //     src: ['audios/sonidos/blanka/especial.mp3'],
-        // });
-        // especialMBison = new Howl({ // so de especial mBison
-        //     src: ['audios/sonidos/mBison/especial.mp3'],
-        // });
+        putenyasoBlanka = new Howl({ // so de putenyaso blanka
+            src: ['audios/sonidos/cops/putenyaso.wav'],
+        });
+        putenyasoMBison = new Howl({ // so de putenyaso mBison
+            src: ['audios/sonidos/cops/putenyaso.wav'],
+        });
+        patadaBlanka = new Howl({ // so de patada blanka
+            src: ['audios/sonidos/cops/patadeta.wav'],
+        });
+        patadaMBison = new Howl({ // so de patada mBison
+            src: ['audios/sonidos/cops/patadeta.wav'],
+        });
+        especialBlanka = new Howl({ // so de especial blanka
+            src: ['audios/sonidos/cops/blanka_electrocuta.wav'],
+        });
+        especialMBison = new Howl({ // so de especial mBison
+            src: ['audios/sonidos/cops/patadota.wav'],
+        });
 
-        // rondaGuanyada = new Howl({ // so de ronda guanyada
-        //     src: ['audios/sonidos/ronda/rondaGuanyada.mp3'],
-        // });
+        veuOuch = new Howl({ // so de veu ouch
+            src: ['audios/sonidos/veus/Ou.wav'],
+        });
 
-        // victoriaTotal = new Howl({ // pantall final
-        //     src: ['audios/sonidos/victoria/victoria_total.mp3'],
-        // });
+        rondaGuanyada = new Howl({ // so de ronda guanyada
+            src: ['audios/sonidos/victoria/victoria_ronda.wav'],
+        });
     }

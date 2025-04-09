@@ -942,13 +942,13 @@ function inici() {
     principal();
     stage_mbison.play();
     inici_joc.stop();
-    p1Audio.stop();
-    p2Audio.stop();
+    menuSeleccioPersonatge = false;
 
     reproduirSonidoRondaActual();
     rondaActual++;
 
     if (blanka.ha_guanyat || m_bison.ha_guanyat) {
+        rondaGuanyada.play();
         iniciFinal();
     }
 }
@@ -1201,10 +1201,13 @@ function dibuixarVictories() {
 function reproduirSonidoRondaActual() {
     if (rondaActual === 1) {
         round1.play();
+        fightSonido.play();
     } else if (rondaActual === 2) {
         round2.play();
+        fightSonido.play();
     } else if (rondaActual === 3) {
         round3.play();
+        fightSonido.play();
     }
 }
 
@@ -1265,28 +1268,39 @@ function jocEnMarcha() {
 
 function detectarColisio() {
     if (blanka.canvas_w + blanka.x > m_bison.x) {
-
         if (blanka.cop_puny && !m_bison.repPunyetazo) {
+            veuOuch.play();
+            putenyasoBlanka.play();
             m_bison.vida -= blanka.danyPunyetazo;
             m_bison.barraVida.width = m_bison.vida;
             m_bison.repPunyetazo = true;
         } else if (blanka.patada && !m_bison.repPatada) {
+            veuOuch.play();
+            patadaBlanka.play();
             m_bison.vida -= blanka.danyPatada;
             m_bison.barraVida.width = m_bison.vida;
             m_bison.repPatada = true;
         } else if (blanka.cop_especial && !m_bison.repCopEspecial) {
+            veuOuch.play();
+            especialBlanka.play();
             m_bison.vida -= blanka.danyCopEspecial;
             m_bison.barraVida.width = m_bison.vida;
             m_bison.repCopEspecial = true;
         } else if (m_bison.cop_puny && !blanka.repPunyetazo) {
+            veuOuch.play();
+            putenyasoMBison.play();
             blanka.vida -= m_bison.danyPunyetazo;
             blanka.barraVida.width = blanka.vida;
             blanka.repPunyetazo = true;
         } else if (m_bison.patada && !blanka.repPatada) {
+            veuOuch.play();
+            patadaMBison.play();
             blanka.vida -= m_bison.danyPatada;
             blanka.barraVida.width = blanka.vida;
             blanka.repPatada = true;
         } else if (m_bison.cop_especial && !blanka.repCopEspecial) {
+            veuOuch.play();
+            especialMBison.play();
             blanka.vida -= m_bison.danyCopEspecial;
             blanka.barraVida.width = blanka.vida;
             blanka.repCopEspecial = true;

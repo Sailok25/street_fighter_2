@@ -1,8 +1,9 @@
-// variables
+// Variables
+let menuSeleccioPersonatge = true;
 let posicioP1 = 1;
 let posicioP2 = 12;
-let player1Slected = false;
-let player2Slected = false;
+let player1Selected = false;
+let player2Selected = false;
 
 // Elements visuals
 let req1 = new elements(96, 140, 32, 36, 'img/others/escollirPersonatge.png', opcionsP1);
@@ -13,58 +14,76 @@ let optBlanka = new elements(288, 113, 96, 95, 'img/others/escollirPersonatge.pn
 
 // document.addEventListener('DOMContentLoaded', iniciPersonatge);
 
+// Función para iniciar la selección de personajes
 function iniciPersonatge() {
     canvas = document.getElementById('canvas');
     ctx = canvas.getContext('2d');
 
     principalPersonatges();
 
-    // Tecles per escollir
+    // Teclas para seleccionar
     document.addEventListener('keydown', (e) => {
-        if (e.key == 'a') {
-            posicioP2 -= 1;
-            moureSelector();
-            p2Audio.play();
-        } else if (e.key == 'd') {
-            posicioP2 += 1;
-            moureSelector();
-            p2Audio.play();
-        } else if (e.key == 'ArrowLeft') {
-            posicioP1 -= 1;
-            moureSelector();
-            p1Audio.play();
-        } else if (e.key == 'ArrowRight') {
-            posicioP1 += 1;
-            moureSelector();
-            p1Audio.play();
-        } else if (e.key == 'Enter') {
-            console.log('Iniciant el joc...');
-            clearInterval(interval);
-            inici();
+        if (menuSeleccioPersonatge) {
+            if (e.key == 'a') {
+                posicioP1 -= 1;
+                moureSelector();
+                p1Audio.play();
+            } else if (e.key == 'd') {
+                posicioP1 += 1;
+                moureSelector();
+                p1Audio.play();
+            } else if (e.key == 'ArrowLeft') {
+                posicioP2 -= 1;
+                moureSelector();
+                p2Audio.play();
+            } else if (e.key == 'ArrowRight') {
+                posicioP2 += 1;
+                moureSelector();
+                p2Audio.play();
+            } else if (e.key == 'Enter') {
+                if (player1Selected && player2Selected) {
+                    console.log('Iniciant el joc...');
+                    clearInterval(interval);
+                    inici();
+                } else {
+                    console.log('Mec, jugadors bloquejats!');
+                }
+            }
         }
     });
-
-
 }
-
 function principalPersonatges() {
     esborrarCanvas();
     opcionsPersonatges.animacio();
 
     req1.animacio();
     req2.animacio();
-    optBlanka.animacio();
-    optMBison.animacio();
+
+    // Solo mostrar las imágenes de los personajes seleccionados si están en las posiciones correctas
+    if (posicioP1 === 3) {
+        optBlanka.animacio();
+        player1Selected = true; // Jugador 1 ha seleccionado correctamente
+    } else {
+        player1Selected = false; // Jugador 1 no está en la posición correcta
+    }
+
+    if (posicioP2 === 12) {
+        optMBison.animacio();
+        player2Selected = true; // Jugador 2 ha seleccionado correctamente
+    } else {
+        player2Selected = false; // Jugador 2 no está en la posición correcta
+    }
 
     interval = requestAnimationFrame(principalPersonatges);
 }
+
 
 function esborrarCanvas() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-function moureSelector() {   
+function moureSelector() {
     if (posicioP1 < 1) {
         posicioP1 = 12;
     } else if (posicioP1 > 12) {
