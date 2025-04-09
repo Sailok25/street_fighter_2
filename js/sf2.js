@@ -1131,7 +1131,7 @@ iniciarTemporitzador();
 
 // funció per a comprovar l'estat de vida d'un jugador i si guanya una ronda fa animacions corresponents
 function controlarVida() {
-    // Si Blanka perd, guanya M. Bison
+    // Si Blanka pierde, gana M. Bison
     if (blanka.vida <= 0) {
         if (cantitatVictoriesP2 < maxVictories) {
             cantitatVictoriesP2++;
@@ -1145,19 +1145,20 @@ function controlarVida() {
             blanka.derrota = true;
             m_bison.ha_guanyat = true;
             m_bison.mostrarWinPetit = true;
-            player1Guanya = true;
+            player2Guanya = true; // Asegúrate de que player2Guanya se establezca correctamente
             pararJocXRonda();
         } else if (cantitatVictoriesP2 == 2) {
             m_bison.victoria2 = true;
             blanka.derrota = true;
             m_bison.ha_guanyat = true;
             m_bison.mostrarWinGran = true;
-            player2Guanya = true;
+            player2Guanya = true; // Asegúrate de que player2Guanya se establezca correctamente
             pararJocXRonda();
+            iniciFinal(); // Llamar a la ventana final cuando M. Bison gana
         }
     }
 
-    // Si Bison perd, guanya Blanka
+    // Si Bison pierde, gana Blanka
     if (m_bison.vida <= 0) {
         if (cantitatVictoriesP1 < maxVictories) {
             cantitatVictoriesP1++;
@@ -1170,17 +1171,20 @@ function controlarVida() {
             m_bison.derrota = true;
             blanka.ha_guanyat = true;
             blanka.mostrarWinPetit = true;
+            player1Guanya = true; // Asegúrate de que player1Guanya se establezca correctamente
             pararJocXRonda();
         } else if (cantitatVictoriesP1 == 2) {
             blanka.victoria2 = true;
             m_bison.derrota = true;
             blanka.ha_guanyat = true;
             blanka.mostrarWinGran = true;
+            player1Guanya = true; // Asegúrate de que player1Guanya se establezca correctamente
             pararJocXRonda();
+            iniciFinal(); // Llamar a la ventana final cuando Blanka gana
         }
     }
-
 }
+
 
 // funció per a dibuixar les vicotries d'un jugador
 function dibuixarVictories() {

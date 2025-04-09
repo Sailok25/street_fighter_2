@@ -13,22 +13,46 @@ function iniciFinal() {
     victoriaTotal.play();
 }
 
+function principalFinal() {
+    esborrarCanvas();
+    
+    if (player1Guanya == true) {
+        imgblankaGuanya.animacio();
+        imgMBisonPerd.animacio();
+        player_text.animacio();
+        num_p1_text.animacio();
+        win_gran_text.animacio();
+    }
+
+    if (player2Guanya == true) {
+        imgMBisonGuanya.animacio();
+        imgblankaPerd.animacio();
+        player_text.animacio();
+        num_p2_text.animacio();
+        win_gran_text.animacio();
+    }
+
+    mostrarFraseVictoria();
+    interval = requestAnimationFrame(principalFinal);
+}
+
+
 function esborrarCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-function principalFinal() {
-    esborrarCanvas();
+function mostrarFraseVictoria() {
+    ctx.font = "10px 'Press Start 2P'";
+    ctx.fillStyle = "white";
+    ctx.textAlign = "center";
 
-    if (player1Guanya == true) {
-        imgblankaGuanya.animacio();
-        imgMBisonPerd.animacio();
-
+    if (player1Guanya) {
+        const xTextBlanka = 192;
+        const yTextBlanka = 60; 
+        ctx.fillText("¡Ha demostrat ser el millor lluitador!", xTextBlanka, yTextBlanka);
+    } else if (player2Guanya) {
+        const xTextBison = 192;
+        const yTextBison = 60;
+        ctx.fillText("¡El seu poder es inigualable!", xTextBison, yTextBison);
     }
-    if (player2Guanya == false) {
-        imgMBisonGuanya.animacio();
-        imgblankaPerd.animacio();
-    }
-
-    interval = requestAnimationFrame(principalFinal);
 }
