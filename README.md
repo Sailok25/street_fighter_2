@@ -24,7 +24,7 @@
 - [x] Musica escenaris (*Blanka = "b" // M.Bison = "v"*)
 - [x] Sons dels cops
 - [x] Só dels rounds
-- [ ] Só de la victoria / derrota
+- [x] Só de la victoria / derrota
 - [x] Só dels menus (*Inici // Final*)
 - [x] Só escollir personatge (anar passant per damunt)
 - [x] Só crossover
@@ -44,7 +44,7 @@
 - [x] Control d'escenaris: Canviar escenari prement una tecla (*Núm 1*).  
 - [ ] Mode inmortal (teclejant 'god')
 - [ ] Bonus cotxe (obj cotxe es va destruint)
-- [ ] Crossover
+- [-] Crossover
 
 ## CROSSOVER
 - [x] Background
