@@ -18,15 +18,16 @@
 - [x] Control jugador que ha guanyat: Mostrar el missatge *"[nomPersonatge] wins!"* quan un jugador guanyi.  
 - [x] Parar o reactivar la musica del joc amb una tecla (*"S"*).
 - [ ] Moviment de finestra (desplaçament per l'eçenari)
-- [ ] Col·lisió
+- [x] Col·lisió
 
 ## MÚSICA I SONS
 - [x] Musica escenaris (*Blanka = "b" // M.Bison = "v"*)
-- [ ] Sons dels cops
+- [x] Sons dels cops
 - [x] Só dels rounds
 - [ ] Só de la victoria / derrota
-- [-] Só dels menus (*Inici // Final*)
+- [x] Só dels menus (*Inici // Final*)
 - [x] Só escollir personatge (anar passant per damunt)
+- [ ] Só crossover
 
 
 ## 🎭 ANIMACIONS  
@@ -37,10 +38,19 @@
 - [x] Animació de cop de puny: Quan el jugador prem una tecla (*P1 = "C" / P2 = "8(vuit)"*).  
 - [x] Animació de cop especial: Quan el jugador prem una tecla (*P1 = "E" / P2 = "0(zero)"*). 
 - [x] Animació de patada: Quan el jugador prem una tecla (*P1 = "F" / P2 = "9(nou)"*).
-- [-] Animació de rebre cops: Quan un jugador rep un cop (colisió), s'activa un efecte de rebre el cop
+- [x] Animació de rebre cops: Quan un jugador rep un cop (colisió), s'activa un efecte de rebre el cop
 
 ## 🥚 EASTER EGG  
 - [x] Control d'escenaris: Canviar escenari prement una tecla (*Núm 1*).  
 - [ ] Mode inmortal (teclejant 'god')
 - [ ] Bonus cotxe (obj cotxe es va destruint)
 - [ ] Crossover
+
+## CROSSOVER
+- [x] Background
+- [ ] Coordenades player 1
+- [ ] Coordenades player 2
+- [ ] Moviments de player 1
+- [ ] Moviments de player 2
+- [ ] Col·lisions
+- [ ] Animacions victoria/derrota
