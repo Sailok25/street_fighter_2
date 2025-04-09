@@ -27,7 +27,7 @@
 - [ ] Só de la victoria / derrota
 - [x] Só dels menus (*Inici // Final*)
 - [x] Só escollir personatge (anar passant per damunt)
-- [ ] Só crossover
+- [x] Só crossover
 
 
 ## 🎭 ANIMACIONS  
