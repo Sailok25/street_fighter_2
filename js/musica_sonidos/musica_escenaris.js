@@ -1,5 +1,7 @@
 var stage_mbison;
 var inici_joc;
+var victoriaTotal;
+var inici_op;
 
 document.addEventListener("DOMContentLoaded", inici);
 function inici(){
@@ -18,9 +20,15 @@ function inici(){
         loop: false
     });
 
+    inici_op = new Howl({
+        src: ['audios/musica/opRetro.mp3'],
+        loop: false
+    });
+
     iniciar_musica_inici();
     iniciar_musica_escenaris();
     iniciar_victoria_total();
+    iniciar_musica_op();
 }
 
 function iniciar_musica_escenaris(){
@@ -78,6 +86,26 @@ function iniciar_victoria_total(){
             console.log("Activant musica de victoria total");
             victoriaTotal.play();
             control_victoria = true;
+            }
+        }
+    });
+}
+
+function iniciar_musica_op(){
+    let control_musica_op = true;
+    
+    document.addEventListener('keydown', (tecla)=>{
+
+        if (tecla.key == 'o'){
+            console.log(control_musica_op)
+            if(control_musica_op){
+                console.log("Aturant musica de op");
+                inici_joc.pause();
+                control_musica_op = false;
+            }else{
+            console.log("Activant musica de op");
+            inici_joc.play();
+            control_musica_op = true;
             }
         }
     });

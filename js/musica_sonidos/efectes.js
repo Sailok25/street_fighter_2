@@ -52,4 +52,22 @@
         rondaGuanyada = new Howl({ // so de ronda guanyada
             src: ['audios/sonidos/victoria/victoria_ronda.wav'],
         });
+
+
+
+        mbisonRiu = new Howl({ // so de veu guanyador
+            src: ['audios/sonidos/veus/mbison_riu.wav'],
+        });
+
+        blankaRoar = new Howl({ // so de veu guanyador
+            src: ['audios/sonidos/veus/blanka_rep.wav'],
+        });
+
+        aplaudimentsPublic = new Howl({ // so de veu guanyador
+            src: ['audios/sonidos/veus/aplaudiments_public.wav'],
+        });
+
+        soGuanyador = new Howl({ // so de veu guanyador
+            src: ['audios/sonidos/victoria/victoria_total.wav'],
+        });
     }

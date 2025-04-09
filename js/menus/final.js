@@ -1,9 +1,3 @@
-//variables
-let player1Guanya = false;
-let player2Guanya = false;
-let player1Perd = false;
-let player2Perd = false;
-
 // Elements visuals
 let imgblankaGuanya = new elements(7, 90, 125, 95, 'img/others/pantallaWinLoose.png', blankaGuanya);
 let imgblankaPerd = new elements(7, 90, 125, 100, 'img/others/pantallaWinLoose.png', blankaPerd);
@@ -26,10 +20,15 @@ function esborrarCanvas() {
 function principalFinal() {
     esborrarCanvas();
 
-    imgblankaGuanya.animacio();
-    imgMBisonPerd.animacio();
-    imgMBisonGuanya.animacio();
-    imgblankaPerd.animacio();
+    if (player1Guanya == true) {
+        imgblankaGuanya.animacio();
+        imgMBisonPerd.animacio();
+
+    }
+    if (player2Guanya == false) {
+        imgMBisonGuanya.animacio();
+        imgblankaPerd.animacio();
+    }
 
     interval = requestAnimationFrame(principalFinal);
 }

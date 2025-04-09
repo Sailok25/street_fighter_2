@@ -62,6 +62,8 @@ function iniciCrossover() {
     ctx = canvas.getContext('2d');
 
     principalCrossover();
+    inici_joc.stop();
+    inici_op.play();
 }
 
 function esborrarCanvas() {

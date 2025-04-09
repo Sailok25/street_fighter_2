@@ -14,6 +14,8 @@ let rondaActual = 1; // Indica la ronda actual
 let jocPausatPerSo = false; // Indica si el joc està pausat per so
 let collisio = false; // Indica si hi ha col·lisió entre els jugadors
 let estaPegant = false; // Indica si el jugador està pegant
+let player1Guanya = false; // Indica si el jugador 1 ha guanyat
+let player2Guanya = false; // Indica si el jugador 2 ha guanyat
 
 
 // array per a les posicions amb els numeros del temporitzador
@@ -946,11 +948,6 @@ function inici() {
 
     reproduirSonidoRondaActual();
     rondaActual++;
-
-    if (blanka.ha_guanyat || m_bison.ha_guanyat) {
-        rondaGuanyada.play();
-        iniciFinal();
-    }
 }
 
 // crida de metodes i elements de pantalla
@@ -1134,42 +1131,47 @@ iniciarTemporitzador();
 
 // funció per a comprovar l'estat de vida d'un jugador i si guanya una ronda fa animacions corresponents
 function controlarVida() {
+    // Si Blanka perd, guanya M. Bison
     if (blanka.vida <= 0) {
-        if (cantitatVictoriesP1 < maxVictories) {
-            cantitatVictoriesP1++;
+        if (cantitatVictoriesP2 < maxVictories) {
+            cantitatVictoriesP2++;
         }
         blanka.vida = 145;
         blanka.barraVida.width = 145;
         blanka.barraVida.x = 35;
 
-        if (cantitatVictoriesP1 == 1) {
+        if (cantitatVictoriesP2 == 1) {
             m_bison.victoria1 = true;
             blanka.derrota = true;
             m_bison.ha_guanyat = true;
             m_bison.mostrarWinPetit = true;
+            player1Guanya = true;
             pararJocXRonda();
-        } else if (cantitatVictoriesP1 == 2) {
+        } else if (cantitatVictoriesP2 == 2) {
             m_bison.victoria2 = true;
             blanka.derrota = true;
             m_bison.ha_guanyat = true;
             m_bison.mostrarWinGran = true;
+            player2Guanya = true;
             pararJocXRonda();
         }
     }
+
+    // Si Bison perd, guanya Blanka
     if (m_bison.vida <= 0) {
-        if (cantitatVictoriesP2 < maxVictories) {
-            cantitatVictoriesP2++;
+        if (cantitatVictoriesP1 < maxVictories) {
+            cantitatVictoriesP1++;
         }
         m_bison.vida = 145;
         m_bison.barraVida.width = 145;
 
-        if (cantitatVictoriesP2 == 1) {
+        if (cantitatVictoriesP1 == 1) {
             blanka.victoria1 = true;
             m_bison.derrota = true;
             blanka.ha_guanyat = true;
             blanka.mostrarWinPetit = true;
             pararJocXRonda();
-        } else if (cantitatVictoriesP2 == 2) {
+        } else if (cantitatVictoriesP1 == 2) {
             blanka.victoria2 = true;
             m_bison.derrota = true;
             blanka.ha_guanyat = true;
@@ -1177,6 +1179,7 @@ function controlarVida() {
             pararJocXRonda();
         }
     }
+
 }
 
 // funció per a dibuixar les vicotries d'un jugador
@@ -1195,7 +1198,6 @@ function dibuixarVictories() {
         pose_victoria2.animacio();
     }
 }
-
 
 // Función para reproducir el sonido correspondiente a la ronda actual
 function reproduirSonidoRondaActual() {
@@ -1217,6 +1219,19 @@ function pararJocXRonda() {
 
     // Pausa previa a finalitzar el joc del tot
     if (cantitatVictoriesP1 >= maxVictories || cantitatVictoriesP2 >= maxVictories) {
+        console.log("Victòries Blanka:", cantitatVictoriesP1);
+        console.log("Victòries Bison:", cantitatVictoriesP2);
+        aplaudimentsPublic.play();
+        soGuanyador.play();
+        console.log("El joc ha acabat, aplaudiments i musiqueta");
+
+        if (cantitatVictoriesP1 >= maxVictories) {
+            console.log("Blanka ha guanyat fa roar");
+            blankaRoar.play();
+        } else if (cantitatVictoriesP2 >= maxVictories) {
+            console.log("M. Bison ha guanyat fa jaja");
+            mbisonRiu.play();
+        }
         return;
     }
 
@@ -1247,7 +1262,6 @@ function pararJocXRonda() {
 
         reproduirSonidoRondaActual();
         rondaActual++;
-
     }, 3000);
 }
 

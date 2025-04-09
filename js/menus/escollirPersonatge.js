@@ -9,8 +9,8 @@ let player2Selected = false;
 let req1 = new elements(96, 140, 32, 36, 'img/others/escollirPersonatge.png', opcionsP1);
 let req2 = new elements(256, 176, 32, 35, 'img/others/escollirPersonatge.png', opcionsP2);
 let opcionsPersonatges = new elements(0, 0, 384, 224, 'img/others/escollirPersonatge.png', fondoPersonatges);
-let optMBison = new elements(0, 120, 96, 88, 'img/others/escollirPersonatge.png', opcioMBison);
-let optBlanka = new elements(288, 113, 96, 95, 'img/others/escollirPersonatge.png', opcioBlanka);
+let optMBison = new elements(288, 120, 96, 88, 'img/others/escollirPersonatge.png', opcioMBison);
+let optBlanka = new elements(0, 113, 96, 95, 'img/others/escollirPersonatge.png', opcioBlanka);
 
 // document.addEventListener('DOMContentLoaded', iniciPersonatge);
 
