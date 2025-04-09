@@ -70,4 +70,12 @@
         soGuanyador = new Howl({ // so de veu guanyador
             src: ['audios/sonidos/victoria/victoria_total.wav'],
         });
+
+        player1Win = new Howl({ // so de veu guanyador
+            src: ['audios/sonidos/veus/player1Win.mp3'],
+        });
+
+        player2Win = new Howl({ // so de veu guanyador
+            src: ['audios/sonidos/veus/player2Win.mp3'],
+        });
     }

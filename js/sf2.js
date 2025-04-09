@@ -1219,19 +1219,20 @@ function pararJocXRonda() {
 
     // Pausa previa a finalitzar el joc del tot
     if (cantitatVictoriesP1 >= maxVictories || cantitatVictoriesP2 >= maxVictories) {
-        console.log("Victòries Blanka:", cantitatVictoriesP1);
-        console.log("Victòries Bison:", cantitatVictoriesP2);
-        aplaudimentsPublic.play();
-        soGuanyador.play();
-        console.log("El joc ha acabat, aplaudiments i musiqueta");
-
         if (cantitatVictoriesP1 >= maxVictories) {
             console.log("Blanka ha guanyat fa roar");
-            blankaRoar.play();
+            player1Win.play();
+            // blankaRoar.play();
         } else if (cantitatVictoriesP2 >= maxVictories) {
             console.log("M. Bison ha guanyat fa jaja");
-            mbisonRiu.play();
+            player2Win.play();
+            // mbisonRiu.play();
         }
+        setTimeout(() => {
+            aplaudimentsPublic.play();
+            soGuanyador.play();
+            console.log("El joc ha acabat, aplaudiments i musiqueta");
+        }, 700);
         return;
     }
 
