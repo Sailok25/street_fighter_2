@@ -135,34 +135,10 @@ let nom_m_bison = [
     {x: 270, y: 70, width: 63, height: 11}   
 ];
 
-// let nom_cammy = [
-//     {x: 0, y: 0, width: 639, height: 480}
-// ];
+let nom_sanji = [
+    {x: 15, y: 212, width: 42, height: 9}   
+];
 
-// let nom_dee_jay = [
-//     {x: 0, y: 0, width: 639, height: 480}   
-// ];
-
-// let nom_dhalsim = [
-//     {x: 0, y: 0, width: 639, height: 480}   
-// ];
-
-// let nom_guile = [
-//     {x: 0, y: 0, width: 639, height: 480}  
-// ];
-
-// let nom_ken = [
-//     {x: 0, y: 0, width: 639, height: 480}
-// ];
-
-// let nom_ryu = [
-//     {x: 16, y: 56, width: 28, height: 9}  
-// ];
-
-// let nom_sagat = [
-//     {x: 0, y: 0, width: 639, height: 480}  
-// ];
-
-// let nom_zangief = [
-//     {x: 0, y: 0, width: 639, height: 480}  
-// ];
+let nom_zoro = [ 
+    {x: 70, y: 212, width: 36, height: 9}   
+];

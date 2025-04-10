@@ -42,7 +42,7 @@ function esborrarCanvas() {
 }
 
 function mostrarFraseVictoria() {
-    ctx.font = "10px 'Press Start 2P'";
+    ctx.font = "15px 'Press Start 2P'";
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
 
