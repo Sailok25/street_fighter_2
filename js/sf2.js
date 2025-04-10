@@ -1189,17 +1189,17 @@ function controlarVida() {
 // funció per a dibuixar les vicotries d'un jugador
 function dibuixarVictories() {
     if (cantitatVictoriesP1 == 1) {
-        pose_victoria3.animacio();
+        pose_victoria1.animacio();
     } else if (cantitatVictoriesP1 == 2) {
-        pose_victoria3.animacio();
-        pose_victoria4.animacio();
+        pose_victoria1.animacio();
+        pose_victoria2.animacio();
     }
 
     if (cantitatVictoriesP2 == 1) {
-        pose_victoria1.animacio();
+        pose_victoria3.animacio();
     } else if (cantitatVictoriesP2 == 2) {
-        pose_victoria1.animacio();
-        pose_victoria2.animacio();
+        pose_victoria3.animacio();
+        pose_victoria4.animacio();
     }
 }
 

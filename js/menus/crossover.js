@@ -610,13 +610,6 @@ document.addEventListener('keydown', (e) => {
         return;
     }
 
-    // Cambiar escenario con la tecla '1'
-    if (e.key == '1') {
-        escenariActual = (escenariActual + 1) % escenaris.length;
-        bgOP.imatge = escenaris[escenariActual].imatge; // Corregido aquí
-        bgOP.sprite.src = bgOP.imatge; // Actualizar la imagen del sprite
-    }
-
     // Teclas Jugador 1 (Sanji)
     if (e.key == 'a') {
         sanji.esquerra();
