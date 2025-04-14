@@ -44,13 +44,13 @@
 - [x] Control d'escenaris: Canviar escenari prement una tecla (*Núm 1*).  
 - [ ] Mode inmortal (teclejant 'god')
 - [ ] Bonus cotxe (obj cotxe es va destruint)
-- [-] Crossover
+- [x] Crossover
 
 ## CROSSOVER
 - [x] Background
-- [ ] Coordenades player 1
-- [ ] Coordenades player 2
-- [ ] Moviments de player 1
-- [ ] Moviments de player 2
+- [x] Coordenades player 1
+- [x] Coordenades player 2
+- [x] Moviments de player 1
+- [x] Moviments de player 2
 - [ ] Col·lisions
 - [ ] Animacions victoria/derrota
